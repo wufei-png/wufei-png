@@ -4,7 +4,7 @@
 ## My area of interest :
   ### EEG analysis using graph convolutional networks
   ### Computer Vision
-  ### AI application development
+  ### Working on AI application development
   ### Aiming at music arrangement and game creation
 # > 我的技术栈 My Skill Set  🛠️
 ## AI application development
