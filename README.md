@@ -66,7 +66,7 @@
 ## Publications
 **CVPR 2022** **[OakInk: A Large-scale Knowledge Repository for Understanding Hand-Object Interaction](https://arxiv.org/abs/2203.15709)**
 
-**ICASSP 2024** **[An Attention-Enhanced Retentive Broad Learning System for Subject-Generic Emotion Recognition from EEG Signals]()**
+**ICASSP 2024** **[An Attention-Enhanced Retentive Broad Learning System for Subject-Generic Emotion Recognition from EEG Signals](https://ieeexplore.ieee.org/document/10446817)**
 
 
 ## My Github Activity
