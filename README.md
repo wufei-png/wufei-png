@@ -2,11 +2,16 @@
 
 
 ## My area of interest :
+  ### LLM agent & LangChain
+  ### Point cloud registration
   ### EEG analysis using graph convolutional networks
   ### Computer Vision
   ### Working on AI application development
   ### Aiming at music arrangement and game creation
 # > 我的技术栈 My Skill Set  🛠️
+
+<sub>上面这些嘛……都是当年用过的老伙计了。现在？<img src="https://icons.getbootstrap.com/assets/icons/claude.svg" width="20" alt="Claude"/> **有 AI 就够了**，代码交给 AI 写，我负责喝咖啡 ☕</sub>
+
 ## AI application development
 <div align="center">  
 <table><tr><td valign="top" width="33%">
