@@ -61,7 +61,7 @@
 ## AI research
 <p align="left"> <a href="https://www.python.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/python-original.svg" alt="Python" height="50" /></a> <a href="https://pytorch.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/pytorch-icon.svg" alt="pytorch" height="50" /></a>  </p>
 
-#### All that stuff above... doesn't seem necessary anymore. <img src="https://icons.getbootstrap.com/assets/icons/claude.svg" width="20" alt="Claude"/> AI is all I need—let AI write the code while I sip my coffee ☕
+### All that stuff above... doesn't seem necessary anymore. <img src="https://icons.getbootstrap.com/assets/icons/claude.svg" width="20" alt="Claude"/> AI is all I need—let AI write the code while I sip my coffee ☕
 
 
 ## Competetions I Participated 
