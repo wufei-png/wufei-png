@@ -1,4 +1,4 @@
-## Hi there 👋 I am Wu Fei, graduated from Shanghai Jiao Tong University In China.
+## Hi there 👋 I am Fei.
 
 
 ## My area of interest :
