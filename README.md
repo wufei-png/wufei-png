@@ -3,11 +3,9 @@
 
 ## My area of interest :
   ### LLM agent & LangChain
-  ### Point cloud registration
+  ### Working on AI application development
   ### EEG analysis using graph convolutional networks
   ### Computer Vision
-  ### Working on AI application development
-  ### Aiming at music arrangement and game creation
 # > 我的技术栈 My Skill Set  🛠️
 
 ## AI application development
