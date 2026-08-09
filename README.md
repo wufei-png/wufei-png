@@ -56,14 +56,14 @@ This is a map of shared capabilities and engineering principles, not a claim tha
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/evidence-trail-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/evidence-trail-light.svg">
-  <img src="./assets/evidence-trail-light.svg" width="100%" alt="A question moves through retrieval, reasoning, tool execution, and verification to produce an evidence receipt" loading="lazy" decoding="async">
+  <img src="./assets/evidence-trail-light.svg" width="100%" alt="A question moves through retrieval, reasoning, tool execution, and verification to produce an evidence receipt">
 </picture>
 
-- Source-linked evidence over plausible summaries.
-- Bounded authority over unconstrained automation.
-- Explicit writes over implicit side effects.
-- Host-native integration over unnecessary abstraction.
-- Human ownership over autonomous contribution volume.
+- Link every engineering claim to verifiable evidence.
+- Give automation explicit authority boundaries.
+- Make automated actions visible and reviewable.
+- Use platform-native capabilities before building extra layers.
+- Keep humans responsible for final decisions and outcomes.
 
 ## Selected OSS contributions
 

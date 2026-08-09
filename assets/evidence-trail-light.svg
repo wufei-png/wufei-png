@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" aria-labelledby="title desc">
   <title id="title">Evidence trail</title>
-  <desc id="desc">A data packet moves once from a question through retrieval, reasoning, and a tool call to a verified receipt.</desc>
+  <desc id="desc">A data packet repeatedly moves from a question through retrieval, reasoning, and a tool call to a verified receipt, pausing between runs.</desc>
   <defs>
     <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="1.2" fill="#cbd5e1" opacity="0.55"/>
@@ -10,19 +10,19 @@
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
     <style>
-      .packet { animation: travel 5s cubic-bezier(.45,0,.25,1) .35s 1 both; }
-      .receipt-ring { animation: receipt 520ms ease-out 4.8s 1 both; }
-      .check { stroke-dasharray: 36; stroke-dashoffset: 36; opacity: 0; animation: draw 420ms ease-out 5s 1 forwards; }
+      .packet { animation: travel 12s cubic-bezier(.45,0,.25,1) .35s infinite both; }
+      .receipt-ring { animation: receipt 12s ease-out .35s infinite both; }
+      .check { stroke-dasharray: 36; stroke-dashoffset: 36; opacity: 0; animation: draw 12s ease-out .35s infinite both; }
       @keyframes travel {
-        0%, 10% { transform: translate(92px, 153px); }
-        23%, 31% { transform: translate(326px, 153px); }
-        44%, 52% { transform: translate(560px, 153px); }
-        65%, 73% { transform: translate(794px, 153px); }
-        90% { opacity: 1; transform: translate(1028px, 153px); }
-        96%, 100% { opacity: 0; transform: translate(1028px, 153px); }
+        0%, 4% { opacity: 1; transform: translate(92px, 153px); }
+        9.5%, 13% { transform: translate(326px, 153px); }
+        18.5%, 22% { transform: translate(560px, 153px); }
+        27%, 30.5% { transform: translate(794px, 153px); }
+        37.5% { opacity: 1; transform: translate(1028px, 153px); }
+        40%, 100% { opacity: 0; transform: translate(1028px, 153px); }
       }
-      @keyframes receipt { from { opacity: .45; } to { opacity: 1; } }
-      @keyframes draw { from { opacity: 0; stroke-dashoffset: 36; } to { opacity: 1; stroke-dashoffset: 0; } }
+      @keyframes receipt { 0%, 37.5% { opacity: .45; } 42%, 100% { opacity: 1; } }
+      @keyframes draw { 0%, 40% { opacity: 0; stroke-dashoffset: 36; } 44%, 100% { opacity: 1; stroke-dashoffset: 0; } }
       @media (prefers-reduced-motion: reduce) {
         .packet { animation: none; opacity: 0; transform: translate(1028px, 153px); }
         .receipt-ring { animation: none; }
@@ -34,7 +34,7 @@
   <rect x="1" y="1" width="1198" height="278" rx="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
   <rect x="2" y="2" width="1196" height="276" rx="23" fill="url(#dots)"/>
   <text x="44" y="48" fill="#0f172a" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="0.7">QUESTION TO VERIFIED RECEIPT</text>
-  <text x="44" y="74" fill="#64748b" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14">The animation runs once, then leaves the evidence visible.</text>
+  <text x="44" y="74" fill="#64748b" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14">The trail replays after a pause, keeping the verified receipt visible between runs.</text>
 
   <path d="M92 153 H1028" fill="none" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
   <path d="M92 153 H794" fill="none" stroke="#0891b2" stroke-width="3" stroke-linecap="round"/>
