@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">From research to reliable agents</title>
+  <desc id="desc">A portfolio capability map connecting research, retrieval, orchestration, delivery, and verification.</desc>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#cbd5e1" opacity="0.6"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0891b2"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect x="1" y="1" width="1198" height="428" rx="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="2" y="2" width="1196" height="426" rx="23" fill="url(#dots)"/>
+
+  <text x="48" y="54" fill="#0f172a" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="23" font-weight="700" letter-spacing="0.5">FROM RESEARCH TO RELIABLE AGENTS</text>
+  <text x="48" y="82" fill="#64748b" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15">A capability map across applied research, agent tooling, delivery, and evidence.</text>
+
+  <path d="M222 231 H274 M456 231 H508 M690 231 H742 M924 231 H976" fill="none" stroke="#0891b2" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="40" y="125" width="182" height="215" rx="18" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <rect x="274" y="125" width="182" height="215" rx="18" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <rect x="508" y="125" width="182" height="215" rx="18" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <rect x="742" y="125" width="182" height="215" rx="18" fill="#ffffff" stroke="#fde68a" stroke-width="2"/>
+    <rect x="976" y="125" width="182" height="215" rx="18" fill="#ffffff" stroke="#fde68a" stroke-width="2"/>
+  </g>
+
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <g transform="translate(40 125)">
+      <circle cx="26" cy="30" r="11" fill="#0891b2"/>
+      <text x="46" y="37" fill="#0f172a" font-size="20" font-weight="700">Research</text>
+      <text x="20" y="76" fill="#64748b" font-size="13" font-weight="600" letter-spacing="1">FOUNDATIONS</text>
+      <text x="20" y="112" fill="#334155" font-size="15">OakInk · EEG</text>
+      <text x="20" y="140" fill="#334155" font-size="15">YOLO-World</text>
+      <text x="20" y="168" fill="#334155" font-size="15">TorchEEG</text>
+    </g>
+
+    <g transform="translate(274 125)">
+      <circle cx="26" cy="30" r="11" fill="#0891b2"/>
+      <text x="46" y="37" fill="#0f172a" font-size="20" font-weight="700">Retrieve</text>
+      <text x="20" y="76" fill="#64748b" font-size="13" font-weight="600" letter-spacing="1">CONTEXT</text>
+      <text x="20" y="112" fill="#334155" font-size="15">AskAny</text>
+      <text x="20" y="140" fill="#334155" font-size="15">Hybrid RAG</text>
+      <text x="20" y="168" fill="#334155" font-size="15">Provenance</text>
+    </g>
+
+    <g transform="translate(508 125)">
+      <circle cx="26" cy="30" r="11" fill="#0891b2"/>
+      <text x="46" y="37" fill="#0f172a" font-size="20" font-weight="700">Orchestrate</text>
+      <text x="20" y="76" fill="#64748b" font-size="13" font-weight="600" letter-spacing="1">TOOLS</text>
+      <text x="20" y="112" fill="#334155" font-size="15">Skills</text>
+      <text x="20" y="140" fill="#334155" font-size="15">Repo Router</text>
+      <text x="20" y="168" fill="#334155" font-size="15">DocMate</text>
+    </g>
+
+    <g transform="translate(742 125)">
+      <circle cx="26" cy="30" r="11" fill="#d97706"/>
+      <text x="46" y="37" fill="#0f172a" font-size="20" font-weight="700">Deliver</text>
+      <text x="20" y="76" fill="#64748b" font-size="13" font-weight="600" letter-spacing="1">CHANGE</text>
+      <text x="20" y="112" fill="#334155" font-size="15">AI Code Review</text>
+      <text x="20" y="140" fill="#334155" font-size="15">Worktrees</text>
+      <text x="20" y="168" fill="#334155" font-size="15">Receipts</text>
+    </g>
+
+    <g transform="translate(976 125)">
+      <circle cx="26" cy="30" r="11" fill="#d97706"/>
+      <text x="46" y="37" fill="#0f172a" font-size="20" font-weight="700">Verify</text>
+      <text x="20" y="76" fill="#64748b" font-size="13" font-weight="600" letter-spacing="1">EVIDENCE</text>
+      <text x="20" y="112" fill="#334155" font-size="15">Reviewworthy</text>
+      <text x="20" y="140" fill="#334155" font-size="15">Git Evidence</text>
+      <text x="20" y="168" fill="#334155" font-size="15">Coverage bounds</text>
+    </g>
+  </g>
+
+  <g transform="translate(48 382)" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13">
+    <circle cx="7" cy="-5" r="6" fill="#0891b2"/><text x="20" y="0" fill="#475569">context and tool flow</text>
+    <circle cx="204" cy="-5" r="6" fill="#d97706"/><text x="217" y="0" fill="#475569">delivery and verification</text>
+  </g>
+</svg>

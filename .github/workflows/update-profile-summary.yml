@@ -1,0 +1,60 @@
+name: Update profile summary
+
+on:
+  schedule:
+    - cron: "17 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-profile-summary
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+
+      - name: Generate light and dark profile cards
+        env:
+          LIGHT_CARD_URL: >-
+            https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=wufei-png&theme=github&name=Wu%20Fei%20%C2%B7%20GitHub&title_color=0891b2&text_color=334155&bg_color=f8fafc&border_color=cbd5e1&icon_color=d97706&chart_color=0891b2
+          DARK_CARD_URL: >-
+            https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=wufei-png&theme=github_dark&name=Wu%20Fei%20%C2%B7%20GitHub&title_color=22d3ee&text_color=c9d1d9&bg_color=0d1117&border_color=30363d&icon_color=f59e0b&chart_color=22d3ee
+        run: |
+          set -euo pipefail
+          curl --fail --show-error --silent --location --retry 3 \
+            "$LIGHT_CARD_URL" --output assets/profile-summary-light.svg
+          curl --fail --show-error --silent --location --retry 3 \
+            "$DARK_CARD_URL" --output assets/profile-summary-dark.svg
+
+          for card in assets/profile-summary-light.svg assets/profile-summary-dark.svg; do
+            grep --fixed-strings --quiet '<svg' "$card"
+            grep --fixed-strings --quiet 'Contributions on GitHub' "$card"
+            if grep --extended-regexp --ignore-case --quiet \
+              '(<script|<foreignObject|javascript:|onload=|onerror=)' "$card"; then
+              echo "Unsafe SVG content in $card" >&2
+              exit 1
+            fi
+            sed --in-place 's/Public Repos/Owned Public Repos/g' "$card"
+            grep --fixed-strings --quiet 'Owned Public Repos' "$card"
+          done
+
+      - name: Commit refreshed cards
+        run: |
+          set -euo pipefail
+          git add -- assets/profile-summary-light.svg assets/profile-summary-dark.svg
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: refresh profile summary card"
+          git push
