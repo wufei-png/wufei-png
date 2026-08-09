@@ -56,7 +56,7 @@ This is a map of shared capabilities and engineering principles, not a claim tha
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/evidence-trail-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/evidence-trail-light.svg">
-  <img src="./assets/evidence-trail-light.svg" width="100%" alt="A question moves through retrieval, reasoning, tool execution, and verification to produce an evidence receipt">
+  <img src="./assets/evidence-trail-light.svg" width="100%" alt="A question moves through retrieval, reasoning, tool execution, and verification to produce an evidence receipt" loading="lazy" decoding="async">
 </picture>
 
 - Source-linked evidence over plausible summaries.
