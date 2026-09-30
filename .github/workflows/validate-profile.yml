@@ -20,10 +20,45 @@ jobs:
       - name: Check out profile repository
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
+          fetch-depth: 0
           persist-credentials: false
       - name: Run offline contract tests
         run: python3 -m unittest discover -s tests -v
       - name: Validate profile evidence and local links
         run: python3 scripts/validate_profile.py
-      - name: Check committed whitespace
-        run: git show --format= --check HEAD
+      - name: Check changed-range whitespace
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          HEAD_SHA: ${{ github.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+
+          ensure_commit() {
+            local sha="$1"
+            if ! git cat-file -e "${sha}^{commit}" 2>/dev/null; then
+              git fetch --no-tags origin "$sha"
+            fi
+            git cat-file -e "${sha}^{commit}"
+          }
+
+          case "$EVENT_NAME" in
+            pull_request)
+              ensure_commit "$BASE_SHA"
+              git diff --check "$BASE_SHA" "$HEAD_SHA"
+              ;;
+            push)
+              if [[ "$BEFORE_SHA" =~ ^0+$ ]]; then
+                empty_tree="$(git hash-object -t tree -w --stdin </dev/null)"
+                git diff --check "$empty_tree" "$HEAD_SHA"
+              else
+                ensure_commit "$BEFORE_SHA"
+                git diff --check "$BEFORE_SHA" "$HEAD_SHA"
+              fi
+              ;;
+            *)
+              echo "Unsupported event: $EVENT_NAME" >&2
+              exit 1
+              ;;
+          esac
