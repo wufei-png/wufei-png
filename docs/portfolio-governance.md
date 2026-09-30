@@ -66,3 +66,16 @@ status notes belong in that item. Do not hide entry links in code or comments.
 CI runs deterministic checks with repository read permission. It must not publish,
 select projects, promote maturity, rewrite content, or refresh data. External
 links remain part of manual review; there is no scheduled checker.
+
+Run the deterministic checks from the repository root with Python 3.11 or newer:
+
+```bash
+python3 -m unittest discover -s tests -v
+python3 scripts/validate_profile.py
+git diff --check
+```
+
+Inline Markdown links (including angle-wrapped paths), URL autolinks, HTML
+`href`/`src`/`srcset`, and local Markdown heading or HTML ID fragments are supported.
+Reference-style link definitions are rejected explicitly. Examples in fenced code
+blocks, inline code, and HTML comments are excluded from displayed-entry checks.
