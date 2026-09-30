@@ -41,6 +41,12 @@ My research background spans computer vision and EEG modeling.
 - **Act within authority:** use platform-native tools and keep consequential delivery decisions with people.
 - **Check and record:** report outcomes as passed, failed, or unverified, with evidence and remaining limits.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/evidence-trail-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/evidence-trail-light.svg">
+  <img src="./assets/evidence-trail-light.svg" width="360" alt="The four working principles above, with outcomes recorded as passed, failed, or unverified">
+</picture>
+
 ## Contact
 
 For open-source collaboration, developer-tooling conversations, or research: **[wufeii.sjtu@gmail.com](mailto:wufeii.sjtu@gmail.com)**.
