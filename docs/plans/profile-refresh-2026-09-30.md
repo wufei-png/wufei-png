@@ -124,7 +124,11 @@
 | 3 | 完成 | XML 解析、静态内容、主题文字一致性通过；GitHub Markdown API 渲染通过；本地 Chrome 375px 深浅色均无横向溢出，辅助图与桌面布局已检查。预览使用本地样式，不等于已发布 GitHub Profile 验收。 |
 | 4 | 完成 | 登记覆盖 8 个作品、4 组贡献、2 项研究；9 个 merged PR 有作者和合并日期；Crossref 已核对 ICASSP 标题/年份/作者，IEEE 页面返回 202 的限制已记录。JSON 解析及人工对账通过。 |
 | 5 | 完成 | 19 个契约测试通过，离线 validator 通过；包含 CLI 非零退出、非法登记/URL 处理、状态就近绑定、外部条目登记、路径/fragment/HTML 链接及越界检查。仅使用 Python 标准库。 |
-| 6 | 待开始 | 依赖阶段 5。 |
+| 6 | 本地完成 | 19 个测试、离线 validator、actionlint 1.7.12 和基线至最终 diff whitespace 检查通过；官方 checkout SHA 已核对归属，actionlint archive 已核对 SHA-256。GitHub Markdown API 渲染、本地 Chrome 窄屏/桌面/主题/禁图和首个键盘导航入口通过。未发布，远端 Actions 与真实 GitHub Profile 验收待发布后确认。 |
+
+实施在 `codex/profile-refresh-2026-09-30` 分支完成。阶段 1–5 的提交依次为 `589c850`、`5c9f65c`、`3a34cf5`、`817b5e4`、`99a9c16`；阶段 6 为本记录所在的 `ci: check profile without repository writes` 提交。所有实现阶段均已完成，不需要独立提示词。
+
+发布后再确认实际 GitHub Profile 的 picture 主题选择、375px 展示与 Actions 运行结果。发布前，远端原统计 workflow 仍以默认分支内容为准；本地删除尚未改变线上执行。这是发布后的验证边界，不是本地实现缺项。论文 DOI 的出版商页面本轮返回 202，已用 Crossref 核对元数据并在登记中保留限制。
 
 ## 长期维护依据
 

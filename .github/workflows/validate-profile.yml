@@ -1,0 +1,29 @@
+name: Validate profile
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Run offline contract tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Validate profile evidence and local links
+        run: python3 scripts/validate_profile.py
+      - name: Check committed whitespace
+        run: git show --format= --check HEAD
