@@ -1,94 +1,52 @@
-<h1 align="center">Wu Fei</h1>
+# Wu Fei
 
-<p align="center"><strong>Applied AI systems — from research to reliable agents.</strong></p>
+Applied AI engineer building agent workflows and developer tools.
 
-<p align="center">
-  I build systems that retrieve context, orchestrate tools, and turn engineering claims into verifiable outcomes.
-</p>
+关注让开源工具更容易使用、协作与验证。
 
-<p align="center">
-  AI Agents · Developer Tools · Trustworthy Automation · Applied Research
-</p>
+**Start here:** [Selected work](#selected-work) · [Merged contributions](#merged-upstream-contributions) · [Email](mailto:wufeii.sjtu@gmail.com)
 
-<p align="center">
-  从应用研究到可靠 Agent 系统，关注上下文、受控执行与可验证结果。
-</p>
+## Selected work
 
-<p align="center">
-  <a href="mailto:wufeii.sjtu@gmail.com">Email</a> ·
-  <a href="#selected-systems">Selected systems</a> ·
-  <a href="#selected-research">Research</a>
-</p>
+- **[Skills](https://github.com/wufei-png/skills)** — Installable agent skills for decisions, reviews, staged delivery, and local-session recovery. Browse the catalog to choose a workflow.
+- **[DocMate](https://github.com/wufei-png/DocMate)** — Ask questions about project documentation, check gaps against code, and prepare isolated documentation repairs. Repair modes are `ask`, `auto`, and `off`.
+- **[AgentRepoRouter](https://github.com/wufei-png/AgentRepoRouter)** — Route coding tasks to the right repository across agent hosts while preserving each coding CLI's native conventions. Start with the installer and repository catalog.
+- **[AskAny](https://github.com/wufei-png/AskAny)** — A Chinese-optimized RAG service combining retrieval, agent workflows, and an OpenAI-compatible API. *Status: current runtime has documented limits.* See the [runtime contract](https://github.com/wufei-png/AskAny/blob/main/docs/current-runtime.md) before setup.
 
-## From research to reliable agents
+## More work
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/system-map-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/system-map-light.svg">
-  <img src="./assets/system-map-light.svg" width="100%" alt="Portfolio capability map from research through retrieval, orchestration, delivery, and verification">
-</picture>
+- **[Reviewworthy](https://github.com/wufei-png/reviewworthy)** — Evidence-bounded workflows for AI-assisted external contributions. *Status: early open-source foundation.*
+- **[Git Evidence](https://github.com/wufei-png/git-evidence)** — Reproducible activity reports with source-linked claims and explicit coverage boundaries. *Status: implementation / contract hardening; live providers experimental.*
+- **[ARC-Bench](https://github.com/wufei-png/arc-bench)** — A generator-agnostic requirement-to-application benchmark with end-to-end Playwright checks. *Status: benchmark and reference tasks.*
+- **[review-agent-flow](https://github.com/wufei-png/review-agent-flow)** — GitLab human and AI review orchestration with program-owned publication. *Status: pilot not approved (no-go).* See its current implementation and canary boundaries before trying it.
 
-This is a map of shared capabilities and engineering principles, not a claim that every project is part of one runtime system.
-
-## Selected systems
-
-### Knowledge & retrieval
-
-- **[AskAny](https://github.com/wufei-png/AskAny)** — A Chinese-optimized RAG assistant with hybrid retrieval, reranking, tool-call traces, and source provenance.
-
-### Agent workflows & tooling
-
-- **[Skills](https://github.com/wufei-png/skills)** — A catalog of small, composable skills for decision clarification, read-only review, and review-gated delivery.
-- **[AgentRepoRouter](https://github.com/wufei-png/AgentRepoRouter)** — Repo-aware routing across repositories, project guidance, and native coding CLI backends.
-- **[DocMate](https://github.com/wufei-png/DocMate)** — Documentation QA that cross-checks code, reports gaps, and can prepare isolated documentation repairs.
-
-### Review & delivery
-
-- **[AI-Codereview-Gitlab-Opencode](https://github.com/wufei-png/AI-Codereview-Gitlab-Opencode)** — Multi-provider code review with a durable queue, disposable worktrees, multiple agent backends, and provider-native delivery receipts.
-
-### Evidence & governance
-
-- **[Reviewworthy](https://github.com/wufei-png/reviewworthy)** — Maintainer-first workflows for human-owned AI-assisted contributions, with policy gates and verification evidence.
-- **[Git Evidence](https://github.com/wufei-png/git-evidence)** — Provider-neutral engineering activity reports with source-linked claims and explicit coverage boundaries.
-
-## How I build
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/evidence-trail-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/evidence-trail-light.svg">
-  <img src="./assets/evidence-trail-light.svg" width="100%" alt="A question moves through retrieval, reasoning, tool execution, and verification to produce an evidence receipt">
-</picture>
-
-- Link every engineering claim to verifiable evidence.
-- Give automation explicit authority boundaries.
-- Make automated actions visible and reviewable.
-- Use platform-native capabilities before building extra layers.
-- Keep humans responsible for final decisions and outcomes.
-
-## Selected OSS contributions
+## Merged upstream contributions
 
 - **[YOLO-World](https://github.com/AILab-CVC/YOLO-World)** — Deployment and inference fixes covering operator export, optional text input, batched NMS, and detection counts ([#174](https://github.com/AILab-CVC/YOLO-World/pull/174), [#211](https://github.com/AILab-CVC/YOLO-World/pull/211), [#216](https://github.com/AILab-CVC/YOLO-World/pull/216), [#297](https://github.com/AILab-CVC/YOLO-World/pull/297)).
 - **[TorchEEG](https://github.com/torcheeg/torcheeg)** — Tensor-safety and visualization fixes plus FACED dataset support ([#106](https://github.com/torcheeg/torcheeg/pull/106), [#107](https://github.com/torcheeg/torcheeg/pull/107), [#108](https://github.com/torcheeg/torcheeg/pull/108)).
 - **[sk2torch](https://github.com/unixpickle/sk2torch)** — Dtype compatibility for support-vector inference ([#2](https://github.com/unixpickle/sk2torch/pull/2)).
 - **[gitlab-mcp](https://github.com/zereight/gitlab-mcp)** — GitHub-style toolsets and configurable tool filtering ([#345](https://github.com/zereight/gitlab-mcp/pull/345)).
 
-## Selected research
+## Research background
 
 - **CVPR 2022 · [OakInk: A Large-scale Knowledge Repository for Understanding Hand-Object Interaction](https://arxiv.org/abs/2203.15709)**
 - **ICASSP 2024 · [An Attention-Enhanced Retentive Broad Learning System for Subject-Generic Emotion Recognition from EEG Signals](https://doi.org/10.1109/ICASSP48485.2024.10446817)**
 
-My research background spans computer vision and neural signal modeling; my current work explores how those foundations can support reliable agent systems.
+My research background spans computer vision and EEG modeling.
 
-## GitHub at a glance
+## How I build
+
+- **Define scope:** agree on the problem, the intended change, and how to check it.
+- **Inspect context:** read relevant documentation, code, and evidence.
+- **Act within authority:** use platform-native tools and keep consequential delivery decisions with people.
+- **Check and record:** report outcomes as passed, failed, or unverified, with evidence and remaining limits.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-summary-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-summary-light.svg">
-  <img src="./assets/profile-summary-light.svg" width="100%" alt="GitHub profile summary showing contributions, owned public repositories, account age, and public contact email">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/evidence-trail-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/evidence-trail-light.svg">
+  <img src="./assets/evidence-trail-light.svg" width="360" alt="The four working principles above, with outcomes recorded as passed, failed, or unverified">
 </picture>
-
-Generated weekly from public GitHub data with [GitHub Profile Summary Cards](https://github.com/vn7n24fzkq/github-profile-summary-cards).
 
 ## Contact
 
-For research, open-source collaboration, or developer-tooling conversations: **[wufeii.sjtu@gmail.com](mailto:wufeii.sjtu@gmail.com)**.
+For open-source collaboration, developer-tooling conversations, or research: **[wufeii.sjtu@gmail.com](mailto:wufeii.sjtu@gmail.com)**.

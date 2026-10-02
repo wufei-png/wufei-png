@@ -1,0 +1,280 @@
+{
+  "version": 1,
+  "verified_on": "2026-09-30",
+  "public_contacts": [
+    "wufeii.sjtu@gmail.com"
+  ],
+  "entries": [
+    {
+      "id": "skills",
+      "category": "selected",
+      "name": "Skills",
+      "url": "https://github.com/wufei-png/skills",
+      "claim": "Installable agent skills for decisions, reviews, staged delivery, and local-session recovery.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "evidence": [
+        {
+          "kind": "documented-contract",
+          "url": "https://github.com/wufei-png/skills/blob/21889b7276c152d237082000da42a18bd1354920/README.md"
+        }
+      ],
+      "limits": "Public documentation was inspected; this register does not claim new live runtime verification."
+    },
+    {
+      "id": "docmate",
+      "category": "selected",
+      "name": "DocMate",
+      "url": "https://github.com/wufei-png/DocMate",
+      "claim": "Documentation QA, code gap verification, and isolated documentation repairs with ask/auto/off modes.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "evidence": [
+        {
+          "kind": "documented-contract",
+          "url": "https://github.com/wufei-png/DocMate/blob/a42db79b40d09543b672381b5e8ad8818bf31767/README.md"
+        }
+      ],
+      "limits": "Golden evaluation cases exist; no provider evaluation was executed in this profile review."
+    },
+    {
+      "id": "agentreporouter",
+      "category": "selected",
+      "name": "AgentRepoRouter",
+      "url": "https://github.com/wufei-png/AgentRepoRouter",
+      "claim": "Repo-aware routing across agent hosts that preserves each coding CLI's native conventions.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "evidence": [
+        {
+          "kind": "documented-contract",
+          "url": "https://github.com/wufei-png/AgentRepoRouter/blob/9330684324c6cb0f684ecdecb95e9d7c2877eaa8/README.md"
+        }
+      ],
+      "limits": "Public documentation was inspected; this register does not claim new live runtime verification."
+    },
+    {
+      "id": "askany",
+      "category": "selected",
+      "name": "AskAny",
+      "url": "https://github.com/wufei-png/AskAny",
+      "claim": "Chinese-optimized RAG service combining retrieval, agent workflows, and an OpenAI-compatible API.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "status_note": "Status: current runtime has documented limits.",
+      "evidence": [
+        {
+          "kind": "documented-contract",
+          "url": "https://github.com/wufei-png/AskAny/blob/62bb85b9456e73712b525434012fcd8c0aa7196c/README.md"
+        },
+        {
+          "kind": "runtime-contract",
+          "url": "https://github.com/wufei-png/AskAny/blob/main/docs/current-runtime.md"
+        }
+      ],
+      "limits": "FAQ insertion in the main ingestion command is disabled; CODE is unimplemented. Source review is not live provider/Postgres proof."
+    },
+    {
+      "id": "reviewworthy",
+      "category": "secondary",
+      "name": "Reviewworthy",
+      "url": "https://github.com/wufei-png/reviewworthy",
+      "claim": "Contributor-side evidence workflow for AI-assisted external contributions.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "status_note": "Status: early open-source foundation.",
+      "evidence": [
+        {
+          "kind": "documented-contract",
+          "url": "https://github.com/wufei-png/reviewworthy/blob/61b83d3449aaeb566eb4e0a9865b19022ce9855d/README.md"
+        }
+      ],
+      "limits": "Public documentation was inspected; this register does not claim new live runtime verification."
+    },
+    {
+      "id": "git-evidence",
+      "category": "secondary",
+      "name": "Git Evidence",
+      "url": "https://github.com/wufei-png/git-evidence",
+      "claim": "Reproducible activity reports with source-linked claims and explicit coverage boundaries.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "status_note": "Status: implementation / contract hardening; live providers experimental.",
+      "evidence": [
+        {
+          "kind": "documented-contract",
+          "url": "https://github.com/wufei-png/git-evidence/blob/cb3c57bd1541f5cd823e79ecab569947fc2e450d/README.md"
+        }
+      ],
+      "limits": "Offline fixtures and dated smoke evidence do not establish production-complete live providers."
+    },
+    {
+      "id": "arc-bench",
+      "category": "secondary",
+      "name": "ARC-Bench",
+      "url": "https://github.com/wufei-png/arc-bench",
+      "claim": "Generator-agnostic requirement-to-application benchmark with Playwright behavior checks.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "status_note": "Status: benchmark and reference tasks.",
+      "evidence": [
+        {
+          "kind": "documented-contract",
+          "url": "https://github.com/wufei-png/arc-bench/blob/d0b7a2180db8e8acca459eb2b4abb1c8939b0ec9/README.md"
+        }
+      ],
+      "limits": "Benchmark ownership does not imply ownership of its ARC compiler baseline; no benchmark runs were executed in this profile review."
+    },
+    {
+      "id": "review-agent-flow",
+      "category": "secondary",
+      "name": "review-agent-flow",
+      "url": "https://github.com/wufei-png/review-agent-flow",
+      "claim": "GitLab human and AI review orchestration with program-owned publication.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "status_note": "Status: pilot not approved (no-go).",
+      "evidence": [
+        {
+          "kind": "documented-contract",
+          "url": "https://github.com/wufei-png/review-agent-flow/blob/90c7c08f262df10f411f77e86c5f1ff696ffa520/README.md"
+        }
+      ],
+      "limits": "The 2026-09-21 canary has receipts for some paths; commit-write recovery remains incomplete and pilot approval is no-go."
+    },
+    {
+      "id": "yolo-world",
+      "category": "upstream",
+      "name": "YOLO-World",
+      "url": "https://github.com/AILab-CVC/YOLO-World",
+      "claim": "Operator export, optional text input, batched NMS, and detection-count fixes.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "evidence": [
+        {
+          "kind": "merged-pr",
+          "url": "https://github.com/AILab-CVC/YOLO-World/pull/174",
+          "author": "wufei-png",
+          "merged_at": "2024-03-26T04:23:57Z"
+        },
+        {
+          "kind": "merged-pr",
+          "url": "https://github.com/AILab-CVC/YOLO-World/pull/211",
+          "author": "wufei-png",
+          "merged_at": "2024-04-19T07:22:36Z"
+        },
+        {
+          "kind": "merged-pr",
+          "url": "https://github.com/AILab-CVC/YOLO-World/pull/216",
+          "author": "wufei-png",
+          "merged_at": "2024-04-16T14:47:41Z"
+        },
+        {
+          "kind": "merged-pr",
+          "url": "https://github.com/AILab-CVC/YOLO-World/pull/297",
+          "author": "wufei-png",
+          "merged_at": "2024-05-16T12:08:58Z"
+        }
+      ]
+    },
+    {
+      "id": "torcheeg",
+      "category": "upstream",
+      "name": "TorchEEG",
+      "url": "https://github.com/torcheeg/torcheeg",
+      "claim": "Tensor-safety and visualization fixes plus FACED dataset support.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "evidence": [
+        {
+          "kind": "merged-pr",
+          "url": "https://github.com/torcheeg/torcheeg/pull/106",
+          "author": "wufei-png",
+          "merged_at": "2024-05-02T14:27:36Z"
+        },
+        {
+          "kind": "merged-pr",
+          "url": "https://github.com/torcheeg/torcheeg/pull/107",
+          "author": "wufei-png",
+          "merged_at": "2024-05-03T06:58:51Z"
+        },
+        {
+          "kind": "merged-pr",
+          "url": "https://github.com/torcheeg/torcheeg/pull/108",
+          "author": "wufei-png",
+          "merged_at": "2024-05-06T13:15:33Z"
+        }
+      ]
+    },
+    {
+      "id": "sk2torch",
+      "category": "upstream",
+      "name": "sk2torch",
+      "url": "https://github.com/unixpickle/sk2torch",
+      "claim": "Dtype compatibility for support-vector inference.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "evidence": [
+        {
+          "kind": "merged-pr",
+          "url": "https://github.com/unixpickle/sk2torch/pull/2",
+          "author": "wufei-png",
+          "merged_at": "2024-05-15T02:30:09Z"
+        }
+      ]
+    },
+    {
+      "id": "gitlab-mcp",
+      "category": "upstream",
+      "name": "gitlab-mcp",
+      "url": "https://github.com/zereight/gitlab-mcp",
+      "claim": "GitHub-style toolsets and configurable tool filtering.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "evidence": [
+        {
+          "kind": "merged-pr",
+          "url": "https://github.com/zereight/gitlab-mcp/pull/345",
+          "author": "wufei-png",
+          "merged_at": "2026-02-18T14:27:39Z"
+        }
+      ]
+    },
+    {
+      "id": "oakink",
+      "category": "research",
+      "name": "OakInk",
+      "url": "https://arxiv.org/abs/2203.15709",
+      "claim": "CVPR 2022 research background in hand-object interaction.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "evidence": [
+        {
+          "kind": "paper",
+          "url": "https://arxiv.org/abs/2203.15709"
+        }
+      ],
+      "limits": "The paper identifies an author Fei Wu; the link from that author to this GitHub identity remains the profile author's self-description."
+    },
+    {
+      "id": "eeg-icassp-2024",
+      "category": "research",
+      "name": "Attention-Enhanced Retentive Broad Learning System",
+      "url": "https://doi.org/10.1109/ICASSP48485.2024.10446817",
+      "claim": "ICASSP 2024 research background in subject-generic EEG emotion recognition.",
+      "visibility": "public",
+      "verified_on": "2026-09-30",
+      "evidence": [
+        {
+          "kind": "paper",
+          "url": "https://doi.org/10.1109/ICASSP48485.2024.10446817"
+        },
+        {
+          "kind": "publication-metadata",
+          "url": "https://api.crossref.org/works/10.1109/ICASSP48485.2024.10446817"
+        }
+      ],
+      "limits": "Crossref confirms the title, year and an author Fei Wu. IEEE returned HTTP 202 without readable paper content; authorship-to-GitHub identity remains self-described."
+    }
+  ]
+}
