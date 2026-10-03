@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="434" viewBox="0 0 360 434" role="img" aria-labelledby="title desc">
+  <title id="title">Working with evidence</title>
+  <desc id="desc">Define scope, inspect context, act within authority, then check and record outcomes as passed, failed, or unverified. Record remaining limits, too. These working principles are adapted to each task.</desc>
+  <defs>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.8" fill="#64748b" opacity="0.18"/>
+    </pattern>
+  </defs>
+  <rect x="1" y="1" width="358" height="432" rx="20" fill="#0d1117" stroke="#30363d"/>
+  <rect x="12" y="12" width="336" height="410" rx="12" fill="url(#dots)"/>
+  <g font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <text x="24" y="29" fill="#22d3ee" font-size="10" font-weight="700" text-anchor="start" letter-spacing="1.8">HOW I BUILD</text>
+    <text x="24" y="57" fill="#f0f6fc" font-size="22" font-weight="700" text-anchor="start">Working with evidence</text>
+    <path d="M36 96 V312" fill="none" stroke="#30363d" stroke-width="2"/>
+    <circle cx="36" cy="96" r="18" fill="#083344" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="36" y="101" fill="#22d3ee" font-size="14" font-weight="700" text-anchor="middle">1</text>
+    <text x="68" y="96" fill="#f0f6fc" font-size="18" font-weight="650" text-anchor="start">Define scope</text>
+    <text x="68" y="119" fill="#c9d1d9" font-size="15" font-weight="400" text-anchor="start">Agree on the problem</text>
+    <text x="68" y="138" fill="#c9d1d9" font-size="15" font-weight="400" text-anchor="start">and checks.</text>
+    <circle cx="36" cy="168" r="18" fill="#083344" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="36" y="173" fill="#22d3ee" font-size="14" font-weight="700" text-anchor="middle">2</text>
+    <text x="68" y="168" fill="#f0f6fc" font-size="18" font-weight="650" text-anchor="start">Inspect context</text>
+    <text x="68" y="191" fill="#c9d1d9" font-size="15" font-weight="400" text-anchor="start">Read documentation,</text>
+    <text x="68" y="210" fill="#c9d1d9" font-size="15" font-weight="400" text-anchor="start">code, and evidence.</text>
+    <circle cx="36" cy="240" r="18" fill="#083344" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="36" y="245" fill="#22d3ee" font-size="14" font-weight="700" text-anchor="middle">3</text>
+    <text x="68" y="240" fill="#f0f6fc" font-size="18" font-weight="650" text-anchor="start">Act within authority</text>
+    <text x="68" y="263" fill="#c9d1d9" font-size="15" font-weight="400" text-anchor="start">Use native tools;</text>
+    <text x="68" y="282" fill="#c9d1d9" font-size="15" font-weight="400" text-anchor="start">keep people in control.</text>
+    <circle cx="36" cy="312" r="18" fill="#271d0b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="36" y="317" fill="#fbbf24" font-size="14" font-weight="700" text-anchor="middle">4</text>
+    <text x="68" y="312" fill="#f0f6fc" font-size="18" font-weight="650" text-anchor="start">Check and record</text>
+    <text x="68" y="335" fill="#c9d1d9" font-size="15" font-weight="400" text-anchor="start">Report outcomes</text>
+    <text x="68" y="354" fill="#c9d1d9" font-size="15" font-weight="400" text-anchor="start">with evidence.</text>
+    <path d="M24 362 H336" fill="none" stroke="#30363d"/>
+    <rect x="24" y="377" width="76" height="26" rx="13" fill="#161b22" stroke="#30363d"/>
+    <text x="62.0" y="395" fill="#c9d1d9" font-size="13" font-weight="600" text-anchor="middle">passed</text>
+    <rect x="110" y="377" width="70" height="26" rx="13" fill="#161b22" stroke="#30363d"/>
+    <text x="145.0" y="395" fill="#c9d1d9" font-size="13" font-weight="600" text-anchor="middle">failed</text>
+    <rect x="190" y="377" width="106" height="26" rx="13" fill="#161b22" stroke="#30363d"/>
+    <text x="243.0" y="395" fill="#c9d1d9" font-size="13" font-weight="600" text-anchor="middle">unverified</text>
+    <text x="24" y="420" fill="#c9d1d9" font-size="14" font-weight="400" text-anchor="start">Record remaining limits, too.</text>
+  </g>
+</svg>

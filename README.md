@@ -1,10 +1,15 @@
-# Wu Fei
+<h1 align="center">Wu Fei</h1>
 
-Applied AI engineer building agent workflows and developer tools.
+<p align="center"><strong>Applied AI engineer building agent workflows and developer tools.</strong></p>
 
-关注让开源工具更容易使用、协作与验证。
+<p align="center">关注让开源工具更容易使用、协作与验证。</p>
 
-**Start here:** [Selected work](#selected-work) · [Merged contributions](#merged-upstream-contributions) · [Email](mailto:wufeii.sjtu@gmail.com)
+<p align="center">
+  <strong>Start here:</strong>
+  <a href="#selected-work">Selected work</a> ·
+  <a href="#merged-upstream-contributions">Merged contributions</a> ·
+  <a href="mailto:wufeii.sjtu@gmail.com">Email</a>
+</p>
 
 ## Selected work
 
@@ -41,11 +46,14 @@ My research background spans computer vision and EEG modeling.
 - **Act within authority:** use platform-native tools and keep consequential delivery decisions with people.
 - **Check and record:** report outcomes as passed, failed, or unverified, with evidence and remaining limits.
 
+<p align="center">
 <picture>
+  <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./assets/evidence-trail-mobile-dark.svg">
+  <source media="(max-width: 800px)" srcset="./assets/evidence-trail-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="./assets/evidence-trail-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/evidence-trail-light.svg">
-  <img src="./assets/evidence-trail-light.svg" width="360" alt="The four working principles above, with outcomes recorded as passed, failed, or unverified">
+  <img src="./assets/evidence-trail-light.svg" width="100%" alt="Define scope, inspect context, act within authority, then check and record; outcomes may be passed, failed, or unverified, with remaining limits recorded">
 </picture>
+</p>
 
 ## Contact
 

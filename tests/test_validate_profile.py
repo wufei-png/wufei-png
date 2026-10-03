@@ -54,19 +54,19 @@ class ProfileContractTests(unittest.TestCase):
     def test_missing_local_file_and_html_source(self):
         for target in ("[Missing](docs/missing.md)", '<img src="assets/missing.svg">', '<source srcset="assets/missing.svg 2x">'):
             with self.subTest(target=target):
-                self.change_readme("# Wu Fei", "# Wu Fei\n" + target)
+                self.change_readme("## Contact", "## Contact\n" + target)
                 self.assert_rejected("missing local link")
-                self.change_readme("# Wu Fei\n" + target, "# Wu Fei")
+                self.change_readme("## Contact\n" + target, "## Contact")
 
     def test_document_fragments_and_explicit_html_anchors(self):
         self.change_readme("#selected-work", "#absent-section")
         self.assert_rejected("missing fragment")
         self.change_readme("#absent-section", "#selected-work")
-        self.change_readme("# Wu Fei", '# Wu Fei\n<a id="extra"></a> [Extra](#extra)')
+        self.change_readme("## Contact", '## Contact\n<a id="extra"></a> [Extra](#extra)')
         self.assertEqual(validator.validate(self.root), [])
 
     def test_relative_link_is_resolved_from_its_document(self):
-        self.change_readme("# Wu Fei", "# Wu Fei\n[Governance](docs/portfolio-governance.md#review-and-automation)")
+        self.change_readme("## Contact", "## Contact\n[Governance](docs/portfolio-governance.md#review-and-automation)")
         self.assertEqual(validator.validate(self.root), [])
 
     def test_local_traversal_and_symlink_escape(self):
@@ -76,14 +76,14 @@ class ProfileContractTests(unittest.TestCase):
             with self.subTest(url=url):
                 if url == "docs/escape.md":
                     (self.root / url).symlink_to(outside)
-                self.change_readme("# Wu Fei", "# Wu Fei\n[Outside](" + url + ")")
+                self.change_readme("## Contact", "## Contact\n[Outside](" + url + ")")
                 self.assert_rejected("escapes repository")
-                self.change_readme("# Wu Fei\n[Outside](" + url + ")", "# Wu Fei")
+                self.change_readme("## Contact\n[Outside](" + url + ")", "## Contact")
 
     def test_status_is_required_beside_the_correct_entry(self):
         note = self.registry["entries"][4]["status_note"]
         self.change_readme(note, "")
-        self.change_readme("# Wu Fei", "# Wu Fei\n" + note)
+        self.change_readme("## Contact", "## Contact\n" + note)
         self.assert_rejected("reviewworthy: missing nearby status_note")
 
     def test_missing_register_entry_unknown_url_and_missing_display(self):
@@ -116,7 +116,7 @@ class ProfileContractTests(unittest.TestCase):
         self.assert_rejected("entry has no register URL")
 
     def test_autolink_is_checked_and_reference_definitions_are_rejected(self):
-        self.change_readme("# Wu Fei", "# Wu Fei\n<https://example.com/unknown>")
+        self.change_readme("## Contact", "## Contact\n<https://example.com/unknown>")
         self.assert_rejected("external link has no public evidence entry")
         self.change_readme("<https://example.com/unknown>", "[Local][local]\n\n[local]: docs/missing.md")
         self.assert_rejected("use inline links")
@@ -124,9 +124,9 @@ class ProfileContractTests(unittest.TestCase):
     def test_unapproved_contacts_in_text_html_and_mailto(self):
         for target in ("visitor@example.com", '<a href="mailto:visitor@example.com">Email</a>', "[Email](mailto:wufeii.sjtu@gmail.com?cc=visitor@example.com)"):
             with self.subTest(target=target):
-                self.change_readme("# Wu Fei", "# Wu Fei\n" + target)
+                self.change_readme("## Contact", "## Contact\n" + target)
                 self.assert_rejected("contact")
-                self.change_readme("# Wu Fei\n" + target, "# Wu Fei")
+                self.change_readme("## Contact\n" + target, "## Contact")
 
     def test_private_or_non_https_register_is_rejected(self):
         entry = self.registry["entries"][0]
@@ -150,9 +150,9 @@ class ProfileContractTests(unittest.TestCase):
         self.assert_rejected("timezone-aware merged_at")
 
     def test_retired_reference_is_rejected_but_history_and_examples_are_allowed(self):
-        self.change_readme("# Wu Fei", "# Wu Fei\n[Old card](assets/profile-summary-light.svg)")
+        self.change_readme("## Contact", "## Contact\n[Old card](assets/profile-summary-light.svg)")
         self.assert_rejected("retired asset")
-        self.change_readme("# Wu Fei\n[Old card](assets/profile-summary-light.svg)", "# Wu Fei\n```md\n[Example](assets/profile-summary-light.svg)\n```\n<!-- [Example](missing.md) -->")
+        self.change_readme("## Contact\n[Old card](assets/profile-summary-light.svg)", "## Contact\n```md\n[Example](assets/profile-summary-light.svg)\n```\n<!-- [Example](missing.md) -->")
         self.assertEqual(validator.validate(self.root), [])
 
     def test_invalid_register_shapes_report_errors(self):

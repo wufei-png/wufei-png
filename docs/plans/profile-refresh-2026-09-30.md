@@ -134,3 +134,15 @@
 
 - [GitHub secure use](https://docs.github.com/en/actions/reference/security/secure-use)：最小 token 权限、核对来源后使用完整 action SHA。
 - [GitHub scheduled workflows](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)：公共仓库 60 天无活动会停用定时任务；本方案选择人工季度复核，不添加定时巡检。
+
+## 2026-10-03 视觉修正
+
+用户复核合并后的 Profile，确认恢复居中首屏和桌面横向方法图，并授权实现后提交、推送到 `main`。本节取代阶段 2 的首屏排版和阶段 3 的固定竖向布局；此前完成记录仍是 2026-09-30 的验证快照。
+
+- 保留现有简介、作品顺序、使用入口、成熟度说明、上游贡献及研究内容。标题、两句定位与导航居中，英文定位适度加粗。
+- 保留一处静态辅助图：桌面使用 840×300 横向节点；800px 及以下视口使用 360×434 竖向版本。四份 SVG 分别覆盖两种布局和深浅主题，步骤、说明及结果一致。
+- 恢复轻量点阵、连线、青色流程节点和琥珀色记录节点；三种结果并列，不默认成功。正文继续提供完整方法论，图片有 title、desc 和 alt。
+- 保留能力地图、动态统计卡片及定时写入 workflow 的退役结果。
+- 现有链接与联系信息测试改用仍为 Markdown 的 Contact 标题作为插入位置，原有验证断言不变。
+
+本地验收：19 个契约测试和离线 validator 通过；GitHub Markdown API 保留 align、picture、media 与 srcset；本地 Chrome 检查 375px、800px、801px 和 1280px 的图片选择与横向溢出，四份 SVG 的文字边界与视觉均已检查。预览样式不等于真实 GitHub Profile；推送后还需检查线上首屏、响应式图片选择和对应提交的 Actions 结果。
