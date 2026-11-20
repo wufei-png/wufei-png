@@ -275,6 +275,65 @@
         }
       ],
       "limits": "Crossref confirms the title, year and an author Fei Wu. IEEE returned HTTP 202 without readable paper content; authorship-to-GitHub identity remains self-described."
+    },
+    {
+      "id": "eeg-bibm-2025",
+      "category": "research",
+      "name": "Adaptive Spatiotemporal Transformer for EEG-Based Emotion Recognition",
+      "url": "https://doi.org/10.1109/BIBM66473.2025.11356339",
+      "claim": "BIBM 2025 short paper on using a spatiotemporal transformer for EEG emotion recognition.",
+      "status_note": "Short paper.",
+      "visibility": "public",
+      "verified_on": "2026-11-21",
+      "evidence": [
+        {
+          "kind": "publication-metadata",
+          "url": "https://api.crossref.org/works/10.1109/BIBM66473.2025.11356339"
+        },
+        {
+          "kind": "conference-acceptance-list",
+          "url": "https://biod.whu.edu.cn/bibm2025/Accepted_Papers.htm"
+        }
+      ],
+      "limits": "Crossref confirms the published record and authors. The organizer lists B2299 in the short-paper track. IEEE Xplore returned a verification prompt. The link between the listed author Fei Wu and the GitHub account is self-described."
+    },
+    {
+      "id": "eeg-prcv-2025",
+      "category": "research",
+      "name": "EEG Graph Attention Network for Adaptive Spatiotemporal-Aware Emotion Recognition",
+      "url": "https://doi.org/10.1007/978-981-95-5764-6_32",
+      "claim": "PRCV 2025 conference paper on graph attention for EEG emotion recognition, published online in January 2026.",
+      "status_note": "Published in 2026.",
+      "visibility": "public",
+      "verified_on": "2026-11-21",
+      "evidence": [
+        {
+          "kind": "publisher-record",
+          "url": "https://link.springer.com/chapter/10.1007/978-981-95-5764-6_32"
+        }
+      ],
+      "limits": "Springer lists Fei Wu as an author. The link between the author and the GitHub account is self-described."
+    },
+    {
+      "id": "eeg-ifac-hms-2025",
+      "category": "research",
+      "name": "Graph-Attentive Kolmogorov-Arnold Networks for Interpretable EEG Emotion Recognition",
+      "url": "https://doi.org/10.1016/j.ifacol.2025.12.532",
+      "claim": "IFAC HMS 2025 conference paper on graph attention and Kolmogorov-Arnold networks for EEG emotion recognition, published in IFAC-PapersOnLine.",
+      "status_note": "IFAC-PapersOnLine",
+      "visibility": "public",
+      "verified_on": "2026-11-21",
+      "evidence": [
+        {
+          "kind": "publisher-record",
+          "url": "https://www.sciencedirect.com/science/article/pii/S2405896325032690"
+        },
+        {
+          "kind": "conference-program",
+          "url": "https://conferences.ifac-control.org/hms2025/wp-content/uploads/sites/28/2025/11/IFAC-HMS-2025-Conference-Program.pdf"
+        }
+      ],
+      "limits": "Elsevier's indexed publisher record confirms the authors and proceedings issue. Direct access to the publisher page returned HTTP 403 in the check environment. The link between the listed author Fei Wu and the GitHub account is self-described."
     }
   ]
 }

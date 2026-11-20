@@ -36,6 +36,9 @@
 
 - **CVPR 2022 · [OakInk: A Large-scale Knowledge Repository for Understanding Hand-Object Interaction](https://arxiv.org/abs/2203.15709)**
 - **ICASSP 2024 · [An Attention-Enhanced Retentive Broad Learning System for Subject-Generic Emotion Recognition from EEG Signals](https://doi.org/10.1109/ICASSP48485.2024.10446817)**
+- **BIBM 2025 · [Adaptive Spatiotemporal Transformer for EEG-Based Emotion Recognition](https://doi.org/10.1109/BIBM66473.2025.11356339)** — Short paper.
+- **PRCV 2025 · [EEG Graph Attention Network for Adaptive Spatiotemporal-Aware Emotion Recognition](https://doi.org/10.1007/978-981-95-5764-6_32)** — Published in 2026.
+- **IFAC HMS 2025 · [Graph-Attentive Kolmogorov-Arnold Networks for Interpretable EEG Emotion Recognition](https://doi.org/10.1016/j.ifacol.2025.12.532)** — In *IFAC-PapersOnLine*.
 
 My research background spans computer vision and EEG modeling.
 

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wu Fei's work across computer vision and EEG research, software and creative projects, and open-source contributions.">
+  <meta name="theme-color" content="#f5f3ef">
+  <title>Wu Fei · Research, projects, and open source</title>
+  <link rel="preload" href="./assets/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./portfolio.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="frame page-header">
+    <nav aria-label="Profile links">
+      <a href="https://github.com/wufei-png">GitHub</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="frame hero" aria-labelledby="page-title">
+      <div class="hero-heading">
+        <h1 id="page-title"><span class="title-word"><span>Wu</span></span> <span class="title-word"><span>Fei</span></span></h1>
+        <p>I work across research, software, and creative projects.</p>
+      </div>
+
+      <nav class="portfolio-index" aria-label="Explore this portfolio">
+        <a class="index-entry" href="#research">
+          <div class="index-plate research-plate" aria-hidden="true">
+            <div class="plate-pose">
+              <img src="./assets/research-hand.webp" width="1320" height="880" alt="" fetchpriority="high">
+              <canvas class="plate-pose-guide" width="768" height="512"></canvas>
+            </div>
+            <img class="plate-eeg" src="./assets/research-eeg.webp" width="1180" height="665" alt="">
+          </div>
+          <div class="index-label">
+            <strong>Research</strong>
+            <span>Computer vision · EEG</span>
+          </div>
+          <span class="entry-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="index-entry" href="#projects">
+          <div class="index-plate project-plate" aria-hidden="true">
+            <img class="plate-film" src="./assets/project-ai-mv.webp" width="1180" height="665" alt="">
+            <img class="plate-workbook" src="./assets/project-workbook.webp" width="1200" height="802" alt="">
+            <span class="plate-terminal"><code>$ npx skills@latest add wufei-png/skills</code></span>
+          </div>
+          <div class="index-label">
+            <strong>Projects</strong>
+            <span>Agent tools · Learning · Media</span>
+          </div>
+          <span class="entry-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="index-entry" href="#contributions">
+          <div class="index-plate contribution-plate" aria-hidden="true">
+            <div class="plate-diff">
+              <div class="plate-diff-header"><span class="merge-mark">Merged</span><span>TorchEEG #107</span></div>
+              <div class="diff-line diff-removed"><span class="diff-sign">−</span><code>fig, axes = plt.subplots(1, num_subplots, figsize=(num_subplots * 5, 5))</code></div>
+              <div class="diff-line diff-added"><span class="diff-sign">+</span><code>if fig_shape == None:</code></div>
+              <div class="diff-line diff-added"><span class="diff-sign">+</span><code>    fig_shape = (1, num_subplots)</code></div>
+            </div>
+          </div>
+          <div class="index-label">
+            <strong>Contributions</strong>
+            <span>Merged pull requests</span>
+          </div>
+          <span class="entry-arrow" aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </section>
+
+    <section class="frame section" id="research" tabindex="-1" aria-labelledby="research-title">
+      <header class="section-heading">
+        <h2 id="research-title">Research</h2>
+        <div class="research-intro">
+          <p>Two questions about how people interact with the world, approached through images and brain signals.</p>
+          <a class="text-link" href="#publications">View publications <span aria-hidden="true">↓</span></a>
+        </div>
+      </header>
+
+      <div class="research-grid">
+        <article class="research-item">
+          <header class="research-item-heading">
+            <p class="field-label">Computer vision · CVPR 2022</p>
+            <h3>How do people grasp and use objects?</h3>
+          </header>
+          <figure>
+            <div class="research-image pose-reveal" data-research-reveal>
+              <div class="pose-framing">
+                <img src="./assets/research-hand.webp" width="1320" height="880" alt="A hand gripping a dark ceramic ring." decoding="async">
+                <canvas class="pose-guide" width="1536" height="1024" aria-hidden="true"></canvas>
+              </div>
+            </div>
+            <figcaption>Hand pose illustration</figcaption>
+          </figure>
+          <p>OakInk records hand–object interactions and describes what people can do with the objects they hold.</p>
+          <a class="text-link" href="https://arxiv.org/abs/2203.15709">Read the OakInk paper <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="research-item">
+          <header class="research-item-heading">
+            <p class="field-label">EEG modeling · ICASSP 2024</p>
+            <h3>Can emotion recognition generalize across people?</h3>
+          </header>
+          <figure>
+            <div class="research-image eeg-image">
+              <img src="./assets/research-eeg.webp" width="1180" height="665" alt="Illustrative EEG waveform traces on paper." decoding="async">
+            </div>
+            <figcaption>Illustrative EEG traces</figcaption>
+          </figure>
+          <p>The study explores an attention-enhanced learning model for recognizing emotions from EEG across different participants.</p>
+          <a class="text-link" href="https://doi.org/10.1109/ICASSP48485.2024.10446817">Read the EEG paper <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+
+      <section class="publications" id="publications" tabindex="-1" aria-labelledby="publications-title">
+        <h3 id="publications-title">Publications</h3>
+        <ul class="publication-list" role="list">
+          <li class="publication">
+            <p class="field-label">CVPR 2022</p>
+            <div>
+              <a class="publication-title" href="https://arxiv.org/abs/2203.15709">OakInk: A Large-scale Knowledge Repository for Understanding Hand-Object Interaction <span aria-hidden="true">↗</span></a>
+              <p class="publication-authors">Lixin Yang, Kailin Li, Xinyu Zhan, <strong>Fei Wu</strong>, Anran Xu, Liu Liu, Cewu Lu</p>
+            </div>
+          </li>
+          <li class="publication">
+            <p class="field-label">ICASSP 2024</p>
+            <div>
+              <a class="publication-title" href="https://doi.org/10.1109/ICASSP48485.2024.10446817">An Attention-Enhanced Retentive Broad Learning System for Subject-Generic Emotion Recognition from EEG Signals <span aria-hidden="true">↗</span></a>
+              <p class="publication-authors">Xiaolong Zhong, <strong>Fei Wu</strong>, Zhong Yin, Gang Liu</p>
+            </div>
+          </li>
+          <li class="publication">
+            <p class="field-label">BIBM 2025 <span class="publication-detail">Short paper</span></p>
+            <div>
+              <a class="publication-title" href="https://doi.org/10.1109/BIBM66473.2025.11356339">Adaptive Spatiotemporal Transformer for EEG-Based Emotion Recognition <span aria-hidden="true">↗</span></a>
+              <p class="publication-authors">Xiaolong Zhong, <strong>Fei Wu</strong>, Yoshiharu Hirano, Zhong Yin, Gang Liu</p>
+            </div>
+          </li>
+          <li class="publication">
+            <p class="field-label">PRCV 2025 <span class="publication-detail">Published in 2026</span></p>
+            <div>
+              <a class="publication-title" href="https://doi.org/10.1007/978-981-95-5764-6_32">EEG Graph Attention Network for Adaptive Spatiotemporal-Aware Emotion Recognition <span aria-hidden="true">↗</span></a>
+              <p class="publication-authors">Xiaolong Zhong, <strong>Fei Wu</strong>, Yoshiharu Hirano, Gang Liu</p>
+            </div>
+          </li>
+          <li class="publication">
+            <p class="field-label">IFAC HMS 2025 <span class="publication-detail">IFAC-PapersOnLine</span></p>
+            <div>
+              <a class="publication-title" href="https://doi.org/10.1016/j.ifacol.2025.12.532">Graph-Attentive Kolmogorov-Arnold Networks for Interpretable EEG Emotion Recognition <span aria-hidden="true">↗</span></a>
+              <p class="publication-authors">Xiaolong Zhong, Yoshiharu Hirano, <strong>Fei Wu</strong>, Zhong Yin, Gang Liu</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="frame section" id="projects" tabindex="-1" aria-labelledby="projects-title">
+      <header class="section-heading">
+        <h2 id="projects-title">Projects</h2>
+        <p>Tools for working with agents, an app for learning, and an experiment in telling a story through music and images.</p>
+      </header>
+
+      <div class="project-showcase">
+        <details class="project" name="project-preview" open>
+          <summary>
+            <span class="project-name">Skills</span>
+            <span class="project-description">Reusable workflows for decisions, reviews, and verified delivery with AI agents.</span>
+            <span class="project-indicator" aria-hidden="true"></span>
+          </summary>
+          <figure class="project-preview">
+            <div class="skill-preview">
+              <p class="skill-path">skills / productivity / grilling</p>
+              <p class="skill-title">Work through a decision</p>
+              <ul>
+                <li>Resolve factual questions from available evidence.</li>
+                <li>Ask one question about a real tradeoff.</li>
+                <li>Agree on the design before implementation.</li>
+              </ul>
+              <code>$ npx skills@latest add wufei-png/skills</code>
+            </div>
+            <figcaption>
+              <span>The Grilling workflow</span>
+              <a class="text-link" href="https://github.com/wufei-png/skills/blob/main/skills/productivity/grilling/SKILL.md">Read the skill <span aria-hidden="true">↗</span></a>
+            </figcaption>
+          </figure>
+        </details>
+
+        <details class="project" name="project-preview">
+          <summary>
+            <span class="project-name">DialogLingo</span>
+            <span class="project-description">Turns AI-agent conversations into editable English workbooks and Anki-ready decks.</span>
+            <span class="project-indicator" aria-hidden="true"></span>
+          </summary>
+          <figure class="project-preview">
+            <a class="project-image workbook-image" href="https://github.com/wufei-png/DialogLingo/blob/main/imgs/workbook.png" aria-label="Open the full DialogLingo workbook screenshot">
+              <img src="./assets/project-workbook.webp" width="1200" height="802" loading="lazy" decoding="async" alt="The DialogLingo workbook shows study entries, Chinese translations, source controls, and export.">
+            </a>
+            <figcaption>
+              <span>Workbook screenshot</span>
+              <a class="text-link" href="https://github.com/wufei-png/DialogLingo">DialogLingo on GitHub <span aria-hidden="true">↗</span></a>
+            </figcaption>
+          </figure>
+        </details>
+
+        <details class="project" name="project-preview">
+          <summary>
+            <span class="project-name">AI MV</span>
+            <span class="project-description">A pixel-art music video about Xiang Yu and Yu Ji, and the production workspace behind it.</span>
+            <span class="project-indicator" aria-hidden="true"></span>
+          </summary>
+          <figure class="project-preview">
+            <a class="project-image film-image" href="https://www.bilibili.com/video/BV1mUWa6AEdd/" data-play-film aria-label="Play the Xiang Yu music video">
+              <img src="./assets/project-ai-mv.webp" width="1180" height="665" loading="lazy" decoding="async" alt="Pixel-art still of Xiang Yu and Yu Ji holding a crimson ribbon in a riverside tent.">
+              <span class="film-play" aria-hidden="true"></span>
+            </a>
+            <template id="xiang-yu-player">
+              <iframe class="project-image film-player" title="Xiang Yu music video on Bilibili" src="https://player.bilibili.com/player.html?bvid=BV1mUWa6AEdd&amp;p=1&amp;autoplay=1&amp;danmaku=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </template>
+            <figcaption>
+              <span>Xiang Yu · Pixel-art music video</span>
+              <span class="film-links">
+                <a class="text-link" href="https://www.bilibili.com/video/BV1mUWa6AEdd/">Watch on Bilibili <span aria-hidden="true">↗</span></a>
+                <a class="text-link film-repository" href="https://github.com/wufei-png/ai-mv">GitHub repository <span aria-hidden="true">↗</span></a>
+              </span>
+            </figcaption>
+          </figure>
+        </details>
+      </div>
+    </section>
+
+    <section class="frame section" id="contributions" tabindex="-1" aria-labelledby="contributions-title">
+      <header class="section-heading">
+        <div>
+          <h2 id="contributions-title">Contributions</h2>
+          <p>Selected merged pull requests to upstream repositories.</p>
+        </div>
+        <a class="all-prs" href="https://github.com/search?q=is%3Apr+is%3Apublic+is%3Amerged+author%3Awufei-png+-user%3Awufei-png&amp;type=pullrequests">All merged external PRs <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <ul class="contribution-list" role="list">
+        <li class="contribution" data-contribution>
+          <div>
+            <p class="field-label">YOLO-World · #216</p>
+            <h3>Batch inference in deployment</h3>
+            <p>Reworked non-maximum suppression so the deployment path can handle batches of images.</p>
+          </div>
+          <div class="contribution-evidence">
+            <div class="diff-line diff-added"><span class="diff-sign">+</span><code>from torchvision.ops import batched_nms</code></div>
+            <a class="text-link" href="https://github.com/AILab-CVC/YOLO-World/pull/216" aria-label="View merged YOLO-World pull request 216">View merged PR <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="contribution" data-contribution>
+          <div>
+            <p class="field-label">TorchEEG · #107</p>
+            <h3>Flexible EEG plot layouts</h3>
+            <p>Added control over the subplot grid for visualizing EEG features as scalp maps.</p>
+          </div>
+          <div class="contribution-evidence">
+            <div class="diff-line diff-added"><span class="diff-sign">+</span><code>fig_shape: tuple[int, int] = None):</code></div>
+            <a class="text-link" href="https://github.com/torcheeg/torcheeg/pull/107" aria-label="View merged TorchEEG pull request 107">View merged PR <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="contribution" data-contribution>
+          <div>
+            <p class="field-label">gitlab-mcp · #345</p>
+            <h3>Configurable toolsets</h3>
+            <p>Added GitHub-style toolsets and filtering so operators can choose which GitLab tools to expose.</p>
+          </div>
+          <div class="contribution-evidence">
+            <div class="diff-line diff-added"><span class="diff-sign">+</span><code>const GITLAB_TOOLSETS_RAW = getConfig("toolsets", "GITLAB_TOOLSETS");</code></div>
+            <a class="text-link" href="https://github.com/zereight/gitlab-mcp/pull/345" aria-label="View merged gitlab-mcp pull request 345">View merged PR <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="page-footer" id="contact" tabindex="-1">
+    <div class="frame footer-grid">
+      <section aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p>I'm an applied AI engineer with a background in computer vision and EEG modeling.</p>
+      </section>
+      <section aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p>For open-source collaboration, research, or conversations about building tools, reach me by email.</p>
+        <a class="text-link" href="mailto:wufeii.sjtu@gmail.com">wufeii.sjtu@gmail.com</a>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>
