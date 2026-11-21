@@ -10,12 +10,14 @@
   <link rel="stylesheet" href="./styles.css">
   <script src="./portfolio.js" defer></script>
   <script src="./eeg.js" defer></script>
+  <script src="./ask.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="frame page-header">
     <nav aria-label="Profile links">
+      <button class="ask-trigger" type="button" aria-haspopup="dialog" aria-controls="portfolio-ask" hidden>Q&amp;A</button>
       <a href="https://github.com/wufei-png">GitHub</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -512,5 +514,42 @@
       </section>
     </div>
   </footer>
+
+  <dialog class="portfolio-ask" id="portfolio-ask" aria-labelledby="ask-title" data-ask-endpoint="">
+    <header class="ask-header">
+      <h2 id="ask-title">Ask about the work</h2>
+      <form method="dialog"><button class="ask-close" type="submit" aria-label="Close Q&amp;A" autofocus>×</button></form>
+    </header>
+
+    <form class="ask-form" data-ask-form hidden>
+      <label for="ask-question">Your question</label>
+      <div class="ask-input-row">
+        <input id="ask-question" name="question" maxlength="300" required autocomplete="off" placeholder="What’s the story behind OakInk?">
+        <button class="ask-submit" type="submit">Ask</button>
+      </div>
+      <p>Questions are sent to OpenAI.</p>
+    </form>
+    <p class="ask-status" data-ask-status role="status"></p>
+    <section class="ask-answer" data-ask-result aria-label="AI answer" aria-live="polite" hidden>
+      <p data-ask-answer></p>
+      <ul class="ask-links" data-ask-sources aria-label="Sources"></ul>
+    </section>
+
+    <section class="ask-faq" aria-labelledby="ask-faq-title">
+      <h3 id="ask-faq-title">Common questions</h3>
+      <details name="portfolio-faq">
+        <summary>What does Wu Fei work on?</summary>
+        <p>His work spans hand–object interaction, EEG modeling, agent tools, and creative projects. <a href="#publications">Publications</a> · <a href="#selected-projects">Projects</a></p>
+      </details>
+      <details name="portfolio-faq">
+        <summary>Does the Feishu assistant reply on its own?</summary>
+        <p>It triages mentions and direct messages. In Shadow mode, uncertain replies go to the owner for approval. <a href="https://github.com/wufei-png/feishu-shadow-agent/blob/main/docs/architecture/current-boundaries.md">Read the architecture</a></p>
+      </details>
+      <details name="portfolio-faq">
+        <summary>Where can I see his upstream contributions?</summary>
+        <p>The portfolio shows selected changes that maintainers merged, including a configurable EEG plot layout in TorchEEG. <a href="#contributions">Selected contributions</a> · <a href="https://github.com/search?q=is%3Apr+is%3Apublic+is%3Amerged+author%3Awufei-png+-user%3Awufei-png&amp;type=pullrequests">All merged external PRs</a></p>
+      </details>
+    </section>
+  </dialog>
 </body>
 </html>

@@ -94,7 +94,8 @@ figure {
   font-weight: 630;
 }
 
-.page-header a {
+.page-header a,
+.ask-trigger:not([hidden]) {
   display: inline-flex;
   align-items: center;
   min-height: 3.25rem;
@@ -102,7 +103,157 @@ figure {
 }
 
 .page-header a:hover,
+.ask-trigger:hover,
 .text-link:hover {
+  color: var(--accent);
+}
+
+.ask-trigger {
+  padding: 0;
+  color: var(--ink);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.portfolio-ask {
+  inset: clamp(3.8rem, 8vh, 6rem) var(--gutter) auto auto;
+  width: min(32rem, calc(100% - 2 * var(--gutter)));
+  max-height: calc(100dvh - 7rem);
+  margin: 0;
+  padding: clamp(1rem, 3.2vw, 1.75rem);
+  overflow: auto;
+  color: var(--ink);
+  background: #fbf8f0;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--accent);
+  box-shadow: 0 1rem 3rem #18223530;
+}
+
+.portfolio-ask::backdrop {
+  background: #18223545;
+}
+
+.ask-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.ask-header h2 {
+  font-size: clamp(1.27rem, 4vw, 1.7rem);
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+.ask-close,
+.ask-submit {
+  min-height: 2.75rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ask-close {
+  width: 2.75rem;
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  font-size: 1.35rem;
+}
+
+.ask-form,
+.ask-answer,
+.ask-faq {
+  margin-top: 1rem;
+}
+
+.ask-form label,
+.ask-faq h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.ask-input-row {
+  display: flex;
+  gap: 0.45rem;
+  margin: 0.3rem 0;
+}
+
+.ask-input-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  background: #fffdf8;
+  font: inherit;
+}
+
+.ask-submit {
+  padding-inline: 0.75rem;
+  color: white;
+  background: var(--accent);
+  border: 0;
+  font-weight: 660;
+}
+
+.ask-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.ask-form p,
+.ask-status {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.ask-status:not(:empty) {
+  margin-top: 0.7rem;
+}
+
+.ask-answer {
+  padding: 0.75rem;
+  background: #eee9df;
+  overflow-wrap: anywhere;
+}
+
+.ask-links {
+  margin: 0.55rem 0 0;
+  padding-inline-start: 1.2rem;
+  color: var(--accent);
+  font-size: 0.88rem;
+}
+
+.ask-links:empty {
+  margin: 0;
+}
+
+.ask-faq h3 {
+  margin-bottom: 0.3rem;
+}
+
+.ask-faq details {
+  border-top: 1px solid var(--rule);
+}
+
+.ask-faq summary {
+  min-height: 2.75rem;
+  padding-block: 0.65rem;
+  font-size: 0.91rem;
+  cursor: pointer;
+}
+
+.ask-faq p {
+  padding-block-end: 0.65rem;
+  color: var(--muted);
+  font-size: 0.91rem;
+}
+
+.ask-faq a {
   color: var(--accent);
 }
 
