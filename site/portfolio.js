@@ -74,13 +74,86 @@ window.addEventListener("resize", scheduleResearch);
 window.addEventListener("pageshow", scheduleResearch);
 updateMotionPreference();
 
+const overview = document.querySelector("#overview");
+let chapterTransition;
+
+function isPlainClick(event) {
+  return !event.defaultPrevented && event.button === 0 &&
+    !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey;
+}
+
+function enterChapter(event, target, sourceArt, targetArt) {
+  if (!isPlainClick(event)) return;
+  if (!document.startViewTransition || motionPreference.matches) return;
+
+  event.preventDefault();
+  const hash = event.currentTarget.hash;
+  if (location.hash !== hash) history.pushState(null, "", hash);
+
+  const arrive = () => {
+    if (location.hash !== hash) return;
+    target.scrollIntoView({ behavior: "instant" });
+    target.focus({ preventScroll: true });
+    if (frame) window.cancelAnimationFrame(frame);
+    updateResearch();
+  };
+
+  if (chapterTransition) {
+    chapterTransition.skipTransition();
+    arrive();
+    return;
+  }
+
+  document.documentElement.setAttribute("data-chapter-transition", "");
+  sourceArt.style.viewTransitionName = "chapter-art";
+  chapterTransition = document.startViewTransition(() => {
+    sourceArt.style.removeProperty("view-transition-name");
+    arrive();
+    targetArt.style.viewTransitionName = "chapter-art";
+  });
+
+  const clearTransition = () => {
+    sourceArt.style.removeProperty("view-transition-name");
+    targetArt.style.removeProperty("view-transition-name");
+    document.documentElement.removeAttribute("data-chapter-transition");
+    chapterTransition = undefined;
+  };
+  chapterTransition.ready.catch(() => {});
+  chapterTransition.finished.then(clearTransition, clearTransition);
+}
+
+for (const entry of overview.querySelectorAll(".index-entry")) {
+  const chapter = document.getElementById(entry.hash.slice(1));
+  const cover = entry.querySelector(".index-plate");
+  const chapterArt = chapter.querySelector("[data-chapter-art]");
+  entry.addEventListener("click", event => enterChapter(event, chapter, cover, chapterArt));
+  chapter.querySelector(".chapter-back").addEventListener("click", event => enterChapter(event, overview, chapterArt, cover));
+}
+
+window.addEventListener("popstate", () => chapterTransition?.skipTransition());
+motionPreference.addEventListener("change", () => {
+  if (motionPreference.matches) chapterTransition?.skipTransition();
+});
+
 const filmPoster = document.querySelector("[data-play-film]");
 const filmTemplate = document.querySelector("#xiang-yu-player");
 const filmProject = filmPoster.closest(".project");
 let filmPlayer = null;
 
+function revealFilmProject() {
+  if (location.hash === "#ai-mv") filmProject.open = true;
+}
+
+window.addEventListener("hashchange", revealFilmProject);
+revealFilmProject();
+
+document.querySelector('.chapter-links a[href="#ai-mv"]').addEventListener("click", event => {
+  // Open the accordion before fragment navigation measures its position.
+  if (isPlainClick(event)) filmProject.open = true;
+});
+
 filmPoster.addEventListener("click", event => {
-  if (event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  if (!isPlainClick(event)) return;
 
   event.preventDefault();
   filmPlayer = filmTemplate.content.firstElementChild.cloneNode(true);

@@ -9,6 +9,7 @@
   <link rel="preload" href="./assets/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./styles.css">
   <script src="./portfolio.js" defer></script>
+  <script src="./eeg.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -21,7 +22,7 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="frame hero" aria-labelledby="page-title">
+    <section class="frame hero" id="overview" tabindex="-1" aria-labelledby="page-title">
       <div class="hero-heading">
         <h1 id="page-title"><span class="title-word"><span>Wu</span></span> <span class="title-word"><span>Fei</span></span></h1>
         <p>I work across research, software, and creative projects.</p>
@@ -74,12 +75,28 @@
       </nav>
     </section>
 
-    <section class="frame section" id="research" tabindex="-1" aria-labelledby="research-title">
-      <header class="section-heading">
-        <h2 id="research-title">Research</h2>
-        <div class="research-intro">
-          <p>Two questions about how people interact with the world, approached through images and brain signals.</p>
-          <a class="text-link" href="#publications">View publications <span aria-hidden="true">↓</span></a>
+    <section class="frame section chapter" id="research" tabindex="-1" aria-labelledby="research-title">
+      <a class="chapter-back" href="#overview"><span aria-hidden="true">↑</span> Overview</a>
+      <header class="chapter-banner research-chapter">
+        <div class="chapter-copy">
+          <p class="chapter-topic">Computer vision · EEG</p>
+          <h2 id="research-title">Research</h2>
+          <p class="chapter-description">How do people use objects? What can brain signals tell us about emotion?</p>
+          <div class="chapter-links">
+            <a class="text-link" href="#eeg-demo">Explore the EEG signal <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#publications">View publications <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="chapter-visual research-plate" data-chapter-art>
+          <div class="plate-pose pose-reveal" data-research-reveal>
+            <div class="pose-framing">
+              <img src="./assets/research-hand.webp" width="1320" height="880" alt="A hand gripping a dark ceramic ring, with an illustrative hand-pose overlay." decoding="async">
+              <canvas class="pose-guide" width="1536" height="1024" aria-hidden="true"></canvas>
+            </div>
+          </div>
+          <div class="chapter-eeg">
+            <img class="plate-eeg" src="./assets/research-eeg.webp" width="1180" height="665" alt="Illustrative EEG waveform traces on paper." decoding="async">
+          </div>
         </div>
       </header>
 
@@ -89,15 +106,6 @@
             <p class="field-label">Computer vision · CVPR 2022</p>
             <h3>How do people grasp and use objects?</h3>
           </header>
-          <figure>
-            <div class="research-image pose-reveal" data-research-reveal>
-              <div class="pose-framing">
-                <img src="./assets/research-hand.webp" width="1320" height="880" alt="A hand gripping a dark ceramic ring." decoding="async">
-                <canvas class="pose-guide" width="1536" height="1024" aria-hidden="true"></canvas>
-              </div>
-            </div>
-            <figcaption>Hand pose illustration</figcaption>
-          </figure>
           <p>OakInk records hand–object interactions and describes what people can do with the objects they hold.</p>
           <a class="text-link" href="https://arxiv.org/abs/2203.15709">Read the OakInk paper <span aria-hidden="true">↗</span></a>
         </article>
@@ -107,16 +115,43 @@
             <p class="field-label">EEG modeling · ICASSP 2024</p>
             <h3>Can emotion recognition generalize across people?</h3>
           </header>
-          <figure>
-            <div class="research-image eeg-image">
-              <img src="./assets/research-eeg.webp" width="1180" height="665" alt="Illustrative EEG waveform traces on paper." decoding="async">
-            </div>
-            <figcaption>Illustrative EEG traces</figcaption>
-          </figure>
           <p>The study explores an attention-enhanced learning model for recognizing emotions from EEG across different participants.</p>
           <a class="text-link" href="https://doi.org/10.1109/ICASSP48485.2024.10446817">Read the EEG paper <span aria-hidden="true">↗</span></a>
         </article>
       </div>
+
+      <section class="chapter-demo" id="eeg-demo" tabindex="-1" aria-labelledby="eeg-demo-title">
+        <header class="demo-heading">
+          <h3 id="eeg-demo-title">Explore an EEG signal</h3>
+          <p class="field-label">Synthetic signal · 128 Hz sampling</p>
+        </header>
+        <div class="eeg-console" data-eeg-console hidden>
+          <p id="eeg-help">Drag across the waveform or adjust the start and end. The spectrum shows which frequencies are strongest in your selection.</p>
+          <div class="eeg-plots">
+            <figure class="eeg-plot">
+              <figcaption><strong>Waveform</strong><span>Time (s)</span></figcaption>
+              <canvas data-eeg-wave width="560" height="180" role="img" aria-label="Eight seconds of a synthetic EEG waveform. A shaded area indicates the selected time window."></canvas>
+            </figure>
+            <figure class="eeg-plot">
+              <figcaption><strong>Frequency spectrum</strong><span>Amplitude (a.u.)</span></figcaption>
+              <canvas data-eeg-spectrum width="560" height="180" role="img" aria-label="A spectrum of the selected window from 0 to 40 hertz."></canvas>
+            </figure>
+          </div>
+          <div class="eeg-controls">
+            <label>
+              <span>Start <span data-eeg-value="start">0.50 s</span></span>
+              <input data-eeg-start type="range" min="0" max="7.5" step="0.125" value="0.5" aria-label="Selection start" aria-describedby="eeg-help">
+            </label>
+            <label>
+              <span>End <span data-eeg-value="end">2.50 s</span></span>
+              <input data-eeg-end type="range" min="0.5" max="8" step="0.125" value="2.5" aria-label="Selection end" aria-describedby="eeg-help">
+            </label>
+            <p class="eeg-peak"><span>Peak frequency</span><strong data-eeg-peak>10 Hz</strong></p>
+          </div>
+          <span class="visually-hidden" role="status" data-eeg-status></span>
+        </div>
+        <p data-eeg-fallback>This example uses a synthetic waveform. A frequency spectrum shows which oscillations are strongest in a chosen time window.</p>
+      </section>
 
       <section class="publications" id="publications" tabindex="-1" aria-labelledby="publications-title">
         <h3 id="publications-title">Publications</h3>
@@ -160,35 +195,89 @@
       </section>
     </section>
 
-    <section class="frame section" id="projects" tabindex="-1" aria-labelledby="projects-title">
-      <header class="section-heading">
-        <h2 id="projects-title">Projects</h2>
-        <p>Tools for working with agents, an app for learning, and an experiment in telling a story through music and images.</p>
+    <section class="frame section chapter" id="projects" tabindex="-1" aria-labelledby="projects-title">
+      <a class="chapter-back" href="#overview"><span aria-hidden="true">↑</span> Overview</a>
+      <header class="chapter-banner projects-chapter">
+        <div class="chapter-copy">
+          <p class="chapter-topic">Agent tools · Learning · Creative media</p>
+          <h2 id="projects-title">Projects</h2>
+          <p class="chapter-description">From local assistants and Chinese document search to language learning and animated media.</p>
+          <div class="chapter-links">
+            <a class="text-link" href="#dialoglingo-demo">Try DialogLingo <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#ai-mv">Watch the MV <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <figure class="chapter-visual chapter-film" data-chapter-art>
+          <img src="./assets/project-ai-mv.webp" width="1180" height="665" alt="A pixel-art still from Xiang Yu, with Xiang Yu and Yu Ji holding a crimson ribbon." decoding="async">
+        </figure>
       </header>
 
-      <div class="project-showcase">
+      <div class="project-showcase" id="selected-projects" tabindex="-1">
         <details class="project" name="project-preview" open>
+          <summary>
+            <span class="project-name">Feishu Shadow Agent</span>
+            <span class="project-description">A local Feishu assistant that triages mentions and direct messages, with uncertain replies routed to the owner for approval.</span>
+            <span class="project-indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="project-preview-area">
+            <figure class="project-preview">
+              <a class="project-image" href="https://github.com/wufei-png/feishu-shadow-agent/blob/main/docs/architecture/current-boundaries.md" aria-label="Read the Feishu Shadow Agent architecture">
+                <img src="./assets/project-feishu.webp" width="900" height="507" loading="lazy" decoding="async" alt="An office illustration of a shadow assistant sorting message and approval cards.">
+              </a>
+              <figcaption>
+                <span>Local MVP · Owner approval</span>
+                <a class="text-link" href="https://github.com/wufei-png/feishu-shadow-agent">Feishu Shadow Agent on GitHub <span aria-hidden="true">↗</span></a>
+              </figcaption>
+            </figure>
+          </div>
+        </details>
+
+        <details class="project" name="project-preview">
+          <summary>
+            <span class="project-name">AskAny</span>
+            <span class="project-description">A retrieval assistant for Chinese technical questions, with FAQ and document search through an OpenAI-compatible API.</span>
+            <span class="project-indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="project-preview-area">
+            <figure class="project-preview">
+              <a class="project-image" href="https://github.com/wufei-png/AskAny/blob/main/docs/current-runtime.md" aria-label="Read the AskAny runtime contract">
+                <img src="./assets/project-askany.webp" width="900" height="507" loading="lazy" decoding="async" alt="An illustration of a question flowing through retrieval and workflow tools to an answer with sources.">
+              </a>
+              <figcaption>
+                <span>FAQ and document retrieval</span>
+                <span class="project-preview-links">
+                  <a class="text-link" href="https://github.com/wufei-png/AskAny/blob/main/docs/current-runtime.md">Runtime contract <span aria-hidden="true">↗</span></a>
+                  <a class="text-link project-repository" href="https://github.com/wufei-png/AskAny">GitHub repository <span aria-hidden="true">↗</span></a>
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </details>
+
+        <details class="project" name="project-preview">
           <summary>
             <span class="project-name">Skills</span>
             <span class="project-description">Reusable workflows for decisions, reviews, and verified delivery with AI agents.</span>
             <span class="project-indicator" aria-hidden="true"></span>
           </summary>
-          <figure class="project-preview">
-            <div class="skill-preview">
-              <p class="skill-path">skills / productivity / grilling</p>
-              <p class="skill-title">Work through a decision</p>
-              <ul>
-                <li>Resolve factual questions from available evidence.</li>
-                <li>Ask one question about a real tradeoff.</li>
-                <li>Agree on the design before implementation.</li>
-              </ul>
-              <code>$ npx skills@latest add wufei-png/skills</code>
-            </div>
-            <figcaption>
-              <span>The Grilling workflow</span>
-              <a class="text-link" href="https://github.com/wufei-png/skills/blob/main/skills/productivity/grilling/SKILL.md">Read the skill <span aria-hidden="true">↗</span></a>
-            </figcaption>
-          </figure>
+          <div class="project-preview-area">
+            <figure class="project-preview">
+              <div class="skill-preview">
+                <p class="skill-path">skills / productivity / grilling</p>
+                <p class="skill-title">Work through a decision</p>
+                <ul>
+                  <li>Resolve factual questions from available evidence.</li>
+                  <li>Ask one question about a real tradeoff.</li>
+                  <li>Agree on the design before implementation.</li>
+                </ul>
+                <code>$ npx skills@latest add wufei-png/skills</code>
+              </div>
+              <figcaption>
+                <span>The Grilling workflow</span>
+                <a class="text-link" href="https://github.com/wufei-png/skills/blob/main/skills/productivity/grilling/SKILL.md">Read the skill <span aria-hidden="true">↗</span></a>
+              </figcaption>
+            </figure>
+          </div>
         </details>
 
         <details class="project" name="project-preview">
@@ -197,53 +286,152 @@
             <span class="project-description">Turns AI-agent conversations into editable English workbooks and Anki-ready decks.</span>
             <span class="project-indicator" aria-hidden="true"></span>
           </summary>
-          <figure class="project-preview">
-            <a class="project-image workbook-image" href="https://github.com/wufei-png/DialogLingo/blob/main/imgs/workbook.png" aria-label="Open the full DialogLingo workbook screenshot">
-              <img src="./assets/project-workbook.webp" width="1200" height="802" loading="lazy" decoding="async" alt="The DialogLingo workbook shows study entries, Chinese translations, source controls, and export.">
-            </a>
-            <figcaption>
-              <span>Workbook screenshot</span>
-              <a class="text-link" href="https://github.com/wufei-png/DialogLingo">DialogLingo on GitHub <span aria-hidden="true">↗</span></a>
-            </figcaption>
-          </figure>
+          <div class="project-preview-area">
+            <figure class="project-preview">
+              <a class="project-image workbook-image" href="https://github.com/wufei-png/DialogLingo/blob/main/imgs/workbook.png" aria-label="Open the full DialogLingo workbook screenshot">
+                <img src="./assets/project-workbook.webp" width="1200" height="802" loading="lazy" decoding="async" alt="The DialogLingo workbook shows study entries, Chinese translations, source controls, and export.">
+              </a>
+              <figcaption>
+                <a class="text-link" href="#dialoglingo-demo">Try a sample workbook <span aria-hidden="true">↓</span></a>
+                <a class="text-link" href="https://github.com/wufei-png/DialogLingo">DialogLingo on GitHub <span aria-hidden="true">↗</span></a>
+              </figcaption>
+            </figure>
+          </div>
         </details>
 
         <details class="project" name="project-preview">
+          <summary>
+            <span class="project-name">Animated Sticker Maker</span>
+            <span class="project-description">Turns a still image and a motion brief into a transparent animated sticker, with visual and technical checks before export.</span>
+            <span class="project-indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="project-preview-area">
+            <figure class="project-preview">
+              <a class="project-image" href="https://github.com/wufei-png/animated-sticker-maker#workflow" aria-label="Read the Animated Sticker Maker workflow">
+                <img src="./assets/project-stickers.webp" width="900" height="507" loading="lazy" decoding="async" alt="A pixel-art character progresses from a reference pose to animation frames, a transparency check, and a finished sticker.">
+              </a>
+              <figcaption>
+                <span>Reference image to validated WebP</span>
+                <a class="text-link" href="https://github.com/wufei-png/animated-sticker-maker">Sticker Maker on GitHub <span aria-hidden="true">↗</span></a>
+              </figcaption>
+            </figure>
+          </div>
+        </details>
+
+        <details class="project" id="ai-mv" name="project-preview" tabindex="-1">
           <summary>
             <span class="project-name">AI MV</span>
             <span class="project-description">A pixel-art music video about Xiang Yu and Yu Ji, and the production workspace behind it.</span>
             <span class="project-indicator" aria-hidden="true"></span>
           </summary>
-          <figure class="project-preview">
-            <a class="project-image film-image" href="https://www.bilibili.com/video/BV1mUWa6AEdd/" data-play-film aria-label="Play the Xiang Yu music video">
-              <img src="./assets/project-ai-mv.webp" width="1180" height="665" loading="lazy" decoding="async" alt="Pixel-art still of Xiang Yu and Yu Ji holding a crimson ribbon in a riverside tent.">
-              <span class="film-play" aria-hidden="true"></span>
-            </a>
-            <template id="xiang-yu-player">
-              <iframe class="project-image film-player" title="Xiang Yu music video on Bilibili" src="https://player.bilibili.com/player.html?bvid=BV1mUWa6AEdd&amp;p=1&amp;autoplay=1&amp;danmaku=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </template>
-            <figcaption>
-              <span>Xiang Yu · Pixel-art music video</span>
-              <span class="film-links">
-                <a class="text-link" href="https://www.bilibili.com/video/BV1mUWa6AEdd/">Watch on Bilibili <span aria-hidden="true">↗</span></a>
-                <a class="text-link film-repository" href="https://github.com/wufei-png/ai-mv">GitHub repository <span aria-hidden="true">↗</span></a>
-              </span>
-            </figcaption>
-          </figure>
+          <div class="project-preview-area">
+            <figure class="project-preview">
+              <a class="project-image film-image" href="https://www.bilibili.com/video/BV1mUWa6AEdd/" data-play-film aria-label="Play the Xiang Yu music video">
+                <img src="./assets/project-ai-mv.webp" width="1180" height="665" loading="lazy" decoding="async" alt="Pixel-art still of Xiang Yu and Yu Ji holding a crimson ribbon in a riverside tent.">
+                <span class="film-play" aria-hidden="true"></span>
+              </a>
+              <template id="xiang-yu-player">
+                <iframe class="project-image film-player" title="Xiang Yu music video on Bilibili" src="https://player.bilibili.com/player.html?bvid=BV1mUWa6AEdd&amp;p=1&amp;autoplay=1&amp;danmaku=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              </template>
+              <figcaption>
+                <span>Xiang Yu · Pixel-art music video</span>
+                <span class="project-preview-links">
+                  <a class="text-link" href="https://www.bilibili.com/video/BV1mUWa6AEdd/">Watch on Bilibili <span aria-hidden="true">↗</span></a>
+                  <a class="text-link project-repository" href="https://github.com/wufei-png/ai-mv">GitHub repository <span aria-hidden="true">↗</span></a>
+                </span>
+              </figcaption>
+            </figure>
+          </div>
         </details>
       </div>
+
+      <section class="chapter-demo dialoglingo-demo" id="dialoglingo-demo" tabindex="-1" aria-labelledby="dialoglingo-demo-title">
+        <header class="demo-heading">
+          <h3 id="dialoglingo-demo-title">From chat to workbook</h3>
+          <p class="field-label">DialogLingo · Sample conversation</p>
+        </header>
+        <p>Switch to the workbook to see two study cards drawn from the same exchange.</p>
+        <fieldset class="demo-switch">
+          <legend class="visually-hidden">DialogLingo example view</legend>
+          <input type="radio" name="dialoglingo-view" id="dialoglingo-chat" checked>
+          <label for="dialoglingo-chat">Conversation</label>
+          <input type="radio" name="dialoglingo-view" id="dialoglingo-workbook">
+          <label for="dialoglingo-workbook">Workbook</label>
+          <div class="switch-content dialoglingo-sheet">
+            <div class="dialoglingo-conversation">
+              <div class="chat-turn">
+                <p class="demo-label">Developer</p>
+                <p>Where should I start if the build fails only in CI?</p>
+              </div>
+              <div class="chat-turn">
+                <p class="demo-label">Agent</p>
+                <p>First, <mark>rule out</mark> a stale dependency cache. <mark>Try to reproduce the failure with a minimal example.</mark></p>
+              </div>
+            </div>
+            <div class="dialoglingo-cards">
+              <article class="study-card">
+                <p class="demo-label">Expression</p>
+                <h4>rule out</h4>
+                <p lang="zh-Hans">排除（某种可能性）</p>
+                <p class="study-context">“First, rule out a stale dependency cache.”</p>
+              </article>
+              <article class="study-card">
+                <p class="demo-label">Sentence</p>
+                <h4>Try to reproduce the failure with a minimal example.</h4>
+                <p lang="zh-Hans">试着用一个最小示例复现这个故障。</p>
+                <p class="study-context">From the agent’s reply</p>
+              </article>
+            </div>
+          </div>
+        </fieldset>
+      </section>
     </section>
 
-    <section class="frame section" id="contributions" tabindex="-1" aria-labelledby="contributions-title">
-      <header class="section-heading">
-        <div>
+    <section class="frame section chapter" id="contributions" tabindex="-1" aria-labelledby="contributions-title">
+      <a class="chapter-back" href="#overview"><span aria-hidden="true">↑</span> Overview</a>
+      <header class="chapter-banner contributions-chapter">
+        <div class="chapter-copy">
+          <p class="chapter-topic">Open source · Merged pull requests</p>
           <h2 id="contributions-title">Contributions</h2>
-          <p>Selected merged pull requests to upstream repositories.</p>
+          <p class="chapter-description">Changes merged upstream across agent tooling, computer vision, documentation, and EEG.</p>
+          <div class="chapter-links">
+            <a class="text-link" href="#torcheeg-layout">Compare EEG layouts <span aria-hidden="true">↓</span></a>
+            <a class="all-prs" href="https://github.com/search?q=is%3Apr+is%3Apublic+is%3Amerged+author%3Awufei-png+-user%3Awufei-png&amp;type=pullrequests">All merged external PRs <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-        <a class="all-prs" href="https://github.com/search?q=is%3Apr+is%3Apublic+is%3Amerged+author%3Awufei-png+-user%3Awufei-png&amp;type=pullrequests">All merged external PRs <span aria-hidden="true">↗</span></a>
+        <div class="chapter-visual contribution-plate" data-chapter-art aria-hidden="true">
+          <div class="plate-diff">
+            <div class="plate-diff-header"><span class="merge-mark">Merged</span><span>TorchEEG #107</span></div>
+            <div class="diff-line diff-removed"><span class="diff-sign">−</span><code>fig, axes = plt.subplots(1, num_subplots, figsize=(num_subplots * 5, 5))</code></div>
+            <div class="diff-line diff-added"><span class="diff-sign">+</span><code>if fig_shape == None:</code></div>
+            <div class="diff-line diff-added"><span class="diff-sign">+</span><code>    fig_shape = (1, num_subplots)</code></div>
+          </div>
+        </div>
       </header>
 
       <ul class="contribution-list" role="list">
+        <li class="contribution" data-contribution>
+          <div>
+            <p class="field-label">oh-my-openagent · #4370</p>
+            <h3>MiniMax Coding Plan fallback</h3>
+            <p>Added both MiniMax Coding Plan providers to the installer and model fallback chains for OpenCode.</p>
+          </div>
+          <div class="contribution-evidence">
+            <div class="diff-line diff-added"><span class="diff-sign">+</span><code>{ providers: ["minimax-coding-plan", "minimax-cn-coding-plan"], model: "MiniMax-M3" },</code></div>
+            <a class="text-link" href="https://github.com/code-yeongyu/oh-my-openagent/pull/4370" aria-label="View merged oh-my-openagent pull request 4370">View merged PR <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="contribution" data-contribution>
+          <div>
+            <p class="field-label">CS-Base · #281</p>
+            <h3>When to use a hash index</h3>
+            <p>Expanded the MySQL guide with the tradeoffs between hash indexes and B+ trees for equality lookups, ordering, and range queries.</p>
+          </div>
+          <div class="contribution-evidence">
+            <div class="diff-line diff-added"><span class="diff-sign">+</span><span lang="zh-Hans">哈希表无法提供数据的顺序访问，更适合做等值的查询。</span></div>
+            <a class="text-link" href="https://github.com/xiaolincoder/CS-Base/pull/281" aria-label="View merged CS-Base pull request 281">View merged PR <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
         <li class="contribution" data-contribution>
           <div>
             <p class="field-label">YOLO-World · #216</p>
@@ -257,17 +445,6 @@
         </li>
         <li class="contribution" data-contribution>
           <div>
-            <p class="field-label">TorchEEG · #107</p>
-            <h3>Flexible EEG plot layouts</h3>
-            <p>Added control over the subplot grid for visualizing EEG features as scalp maps.</p>
-          </div>
-          <div class="contribution-evidence">
-            <div class="diff-line diff-added"><span class="diff-sign">+</span><code>fig_shape: tuple[int, int] = None):</code></div>
-            <a class="text-link" href="https://github.com/torcheeg/torcheeg/pull/107" aria-label="View merged TorchEEG pull request 107">View merged PR <span aria-hidden="true">↗</span></a>
-          </div>
-        </li>
-        <li class="contribution" data-contribution>
-          <div>
             <p class="field-label">gitlab-mcp · #345</p>
             <h3>Configurable toolsets</h3>
             <p>Added GitHub-style toolsets and filtering so operators can choose which GitLab tools to expose.</p>
@@ -275,6 +452,47 @@
           <div class="contribution-evidence">
             <div class="diff-line diff-added"><span class="diff-sign">+</span><code>const GITLAB_TOOLSETS_RAW = getConfig("toolsets", "GITLAB_TOOLSETS");</code></div>
             <a class="text-link" href="https://github.com/zereight/gitlab-mcp/pull/345" aria-label="View merged gitlab-mcp pull request 345">View merged PR <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="contribution" data-contribution>
+          <div>
+            <p class="field-label">claude-ai-music-skills · #571</p>
+            <h3>Codex plugin for a music workflow</h3>
+            <p>Added a Codex plugin manifest that reuses the project's existing skills and launches its bundled MCP server.</p>
+          </div>
+          <div class="contribution-evidence">
+            <div class="diff-line diff-added"><span class="diff-sign">+</span><code>"skills": "./skills/",</code></div>
+            <a class="text-link" href="https://github.com/bitwize-music-studio/claude-ai-music-skills/pull/571" aria-label="View merged claude-ai-music-skills pull request 571">View merged PR <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="contribution" id="torcheeg-layout" tabindex="-1" data-contribution>
+          <div>
+            <p class="field-label">TorchEEG · #107</p>
+            <h3>Flexible EEG plot layouts</h3>
+            <p>TorchEEG used to put every frequency band in a single row. This change lets users choose the number of rows and columns.</p>
+          </div>
+          <div class="contribution-evidence">
+            <fieldset class="demo-switch topomap-switch">
+              <legend class="visually-hidden">TorchEEG subplot layout</legend>
+              <input type="radio" name="torcheeg-layout" id="torcheeg-before" checked>
+              <label for="torcheeg-before">Before · 1 × 4</label>
+              <input type="radio" name="torcheeg-layout" id="torcheeg-after">
+              <label for="torcheeg-after">After · 2 × 2</label>
+              <figure class="switch-content topomap-figure">
+                <div class="topomap-grid">
+                  <div class="topomap"><span aria-hidden="true"></span>Theta</div>
+                  <div class="topomap"><span aria-hidden="true"></span>Alpha</div>
+                  <div class="topomap"><span aria-hidden="true"></span>Beta</div>
+                  <div class="topomap"><span aria-hidden="true"></span>Gamma</div>
+                </div>
+                <figcaption>
+                  <code class="topomap-before">plt.subplots(1, num_subplots)</code>
+                  <code class="topomap-after">fig_shape=(2, 2)</code>
+                  <span>Same illustrative scalp maps in both layouts.</span>
+                </figcaption>
+              </figure>
+            </fieldset>
+            <a class="text-link" href="https://github.com/torcheeg/torcheeg/pull/107" aria-label="View merged TorchEEG pull request 107">View merged PR <span aria-hidden="true">↗</span></a>
           </div>
         </li>
       </ul>
