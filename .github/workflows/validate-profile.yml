@@ -24,6 +24,8 @@ jobs:
           persist-credentials: false
       - name: Run offline contract tests
         run: python3 -m unittest discover -s tests -v
+      - name: Test portfolio Q&A Worker
+        run: node --test workers/portfolio-ask/ask.test.mjs
       - name: Validate profile evidence and local links
         run: python3 scripts/validate_profile.py
       - name: Check changed-range whitespace
