@@ -7,9 +7,10 @@
   <meta name="theme-color" content="#f5f3ef">
   <title>Wu Fei · Research, projects, and open source</title>
   <link rel="preload" href="./assets/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=2">
   <script src="./portfolio.js" defer></script>
   <script src="./eeg.js" defer></script>
+  <script src="./portfolio-details.js" defer></script>
   <script src="./ask.js" defer></script>
 </head>
 <body>
@@ -18,6 +19,7 @@
   <header class="frame page-header">
     <nav aria-label="Profile links">
       <button class="ask-trigger" type="button" aria-haspopup="dialog" aria-controls="portfolio-ask" hidden>Q&amp;A</button>
+      <button class="sound-toggle" type="button" aria-label="Click sounds" aria-pressed="false" hidden>Sound off</button>
       <a href="https://github.com/wufei-png">GitHub</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -26,7 +28,14 @@
   <main id="main" tabindex="-1">
     <section class="frame hero" id="overview" tabindex="-1" aria-labelledby="page-title">
       <div class="hero-heading">
-        <h1 id="page-title"><span class="title-word"><span>Wu</span></span> <span class="title-word"><span>Fei</span></span></h1>
+        <h1 id="page-title">
+          <button class="name-ripple" type="button" aria-label="Wu Fei" aria-describedby="name-ripple-label" disabled>
+            <span class="title-word" aria-hidden="true"><span><span class="name-letter">W</span><span class="name-letter">u</span></span></span>
+            <span class="title-word" aria-hidden="true"><span><span class="name-letter">F</span><span class="name-letter">e</span><span class="name-letter">i</span></span></span>
+            <span class="name-ripple-mark" aria-hidden="true">◌</span>
+          </button>
+        </h1>
+        <span id="name-ripple-label" class="visually-hidden">Play a ripple in the title</span>
         <p>I work across research, software, and creative projects.</p>
       </div>
 
@@ -149,6 +158,10 @@
               <input data-eeg-end type="range" min="0.5" max="8" step="0.125" value="2.5" aria-label="Selection end" aria-describedby="eeg-help">
             </label>
             <p class="eeg-peak"><span>Peak frequency</span><strong data-eeg-peak>10 Hz</strong></p>
+          </div>
+          <div class="eeg-listen" hidden>
+            <button type="button" data-listen>Hear the peak</button>
+            <p data-tone-note role="status">Frequency ×16 for audibility.</p>
           </div>
           <span class="visually-hidden" role="status" data-eeg-status></span>
         </div>
@@ -301,20 +314,38 @@
           </div>
         </details>
 
-        <details class="project" name="project-preview">
+        <details class="project" id="sticker-maker" name="project-preview">
           <summary>
             <span class="project-name">Animated Sticker Maker</span>
-            <span class="project-description">Turns a still image and a motion brief into a transparent animated sticker, with visual and technical checks before export.</span>
+            <span class="project-description">Turns a still image plus a short motion instruction into a looping sticker with a transparent background.</span>
             <span class="project-indicator" aria-hidden="true"></span>
           </summary>
           <div class="project-preview-area">
             <figure class="project-preview">
-              <a class="project-image" href="https://github.com/wufei-png/animated-sticker-maker#workflow" aria-label="Read the Animated Sticker Maker workflow">
-                <img src="./assets/project-stickers.webp" width="900" height="507" loading="lazy" decoding="async" alt="A pixel-art character progresses from a reference pose to animation frames, a transparency check, and a finished sticker.">
-              </a>
+              <div class="sticker-stage">
+                <div class="sticker-steps">
+                  <div class="sticker-step">
+                    <p>Reference image</p>
+                    <div class="sticker-frame sticker-reference">
+                      <img src="./assets/sticker-reference.png" width="480" height="480" alt="A pixel-art tabby looking ahead." loading="lazy">
+                    </div>
+                  </div>
+                  <span class="sticker-arrow" aria-hidden="true">→</span>
+                  <div class="sticker-step">
+                    <p>Animated WebP</p>
+                    <div class="sticker-frame sticker-output">
+                      <img id="sticker-loop" src="./assets/sticker-poster.png" data-sticker-loop="./assets/sticker-loop.webp" width="480" height="480" alt="The tabby hops and winks against a transparent background." loading="lazy">
+                    </div>
+                  </div>
+                </div>
+                <div class="sticker-controls">
+                  <p><span>Motion brief</span> “Hop, wink at the top, then land.”</p>
+                  <button class="sticker-play" type="button" data-sticker-play aria-controls="sticker-loop" hidden>Play animation</button>
+                </div>
+              </div>
               <figcaption>
-                <span>Reference image to validated WebP</span>
-                <a class="text-link" href="https://github.com/wufei-png/animated-sticker-maker">Sticker Maker on GitHub <span aria-hidden="true">↗</span></a>
+                <span>Hand-drawn sample · Exported with Sticker Maker</span>
+                <a class="text-link" href="https://github.com/wufei-png/animated-sticker-maker#workflow">See the workflow <span aria-hidden="true">↗</span></a>
               </figcaption>
             </figure>
           </div>
