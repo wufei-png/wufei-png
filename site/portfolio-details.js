@@ -66,6 +66,7 @@
 
   const name = document.querySelector(".name-ripple");
   const letters = name.querySelectorAll(".name-letter");
+  const echoes = name.querySelectorAll(".name-echo");
   let ring;
   let pressTimer;
   name.disabled = false;
@@ -93,6 +94,16 @@
       { transform: "translate(-50%, -50%) scale(1)", opacity: 0 },
     ], { duration: 650, easing: "cubic-bezier(.13,.55,.32,1)" }).onfinish = () => wave.remove();
 
+    for (const [index, echo] of echoes.entries()) {
+      for (const running of echo.getAnimations()) running.cancel();
+      const distance = (index + 1) * Math.max(4, box.width * 0.012);
+      echo.animate([
+        { transform: "translateX(0)", opacity: 0 },
+        { transform: `translateX(${distance}px)`, opacity: 0.55 - index * 0.1, offset: 0.3 },
+        { transform: `translateX(${distance * 1.3}px)`, opacity: 0 },
+      ], { duration: 680 + index * 70, easing: "cubic-bezier(.2,.65,.25,1)" });
+    }
+
     for (const letter of letters) {
       for (const running of letter.getAnimations()) running.cancel();
       const position = letter.getBoundingClientRect();
@@ -105,6 +116,15 @@
         { transform: "translateY(0)", color: "var(--ink)" },
       ], { duration: 395, delay: Math.min(210, distance * 0.34), easing: "cubic-bezier(.25,.46,.45,.94)" });
     }
+  });
+
+  reducedMotion.addEventListener("change", () => {
+    if (!reducedMotion.matches) return;
+    for (const element of [...letters, ...echoes, ...(ring ? [ring] : [])]) {
+      for (const running of element.getAnimations()) running.cancel();
+    }
+    ring?.remove();
+    ring = null;
   });
 
   const sticker = document.querySelector("[data-sticker-loop]");

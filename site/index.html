@@ -7,10 +7,13 @@
   <meta name="theme-color" content="#f5f3ef">
   <title>Wu Fei · Research, projects, and open source</title>
   <link rel="preload" href="./assets/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=2">
+  <link rel="stylesheet" href="./styles.css?v=4">
   <script src="./portfolio.js" defer></script>
   <script src="./eeg.js" defer></script>
   <script src="./portfolio-details.js" defer></script>
+  <script src="./three-body-orbit.js" defer></script>
+  <script src="./three-body.js" defer></script>
+  <script src="./visual-details.js" defer></script>
   <script src="./ask.js" defer></script>
 </head>
 <body>
@@ -32,11 +35,29 @@
           <button class="name-ripple" type="button" aria-label="Wu Fei" aria-describedby="name-ripple-label" disabled>
             <span class="title-word" aria-hidden="true"><span><span class="name-letter">W</span><span class="name-letter">u</span></span></span>
             <span class="title-word" aria-hidden="true"><span><span class="name-letter">F</span><span class="name-letter">e</span><span class="name-letter">i</span></span></span>
+            <span class="name-echo" aria-hidden="true"><span>Wu</span><span>Fei</span></span>
+            <span class="name-echo" aria-hidden="true"><span>Wu</span><span>Fei</span></span>
+            <span class="name-echo" aria-hidden="true"><span>Wu</span><span>Fei</span></span>
             <span class="name-ripple-mark" aria-hidden="true">◌</span>
           </button>
         </h1>
-        <span id="name-ripple-label" class="visually-hidden">Play a ripple in the title</span>
-        <p>I work across research, software, and creative projects.</p>
+        <span id="name-ripple-label" class="visually-hidden">Play a ripple and an echo in the title</span>
+        <div class="hero-intro">
+          <p>I work across research, software, and creative projects.</p>
+          <div class="three-body-mark" data-three-body>
+            <svg class="three-body-orbit" viewBox="0 0 180 120" role="img" aria-label="Three equal bodies follow a figure-eight orbit.">
+              <path class="three-body-path" data-orbit-path d="M90 60 C66 32 20 28 18 60 C20 92 66 88 90 60 C114 32 160 28 162 60 C160 92 114 88 90 60 Z"/>
+              <path class="three-body-trail body-one" data-orbit-trail="0"/>
+              <path class="three-body-trail body-two" data-orbit-trail="1"/>
+              <path class="three-body-trail body-three" data-orbit-trail="2"/>
+              <circle class="three-body-star body-one" data-orbit-body="0" cx="22" cy="77" r="5"/>
+              <circle class="three-body-star body-two" data-orbit-body="1" cx="158" cy="43" r="5"/>
+              <circle class="three-body-star body-three" data-orbit-body="2" cx="90" cy="60" r="5"/>
+            </svg>
+            <button class="orbit-toggle" type="button" aria-label="Animate the three-body orbit" aria-pressed="false" data-orbit-toggle hidden>Play orbit</button>
+            <span class="orbit-status" data-orbit-status hidden>Motion reduced</span>
+          </div>
+        </div>
       </div>
 
       <nav class="portfolio-index" aria-label="Explore this portfolio">
@@ -101,9 +122,12 @@
         <div class="chapter-visual research-plate" data-chapter-art>
           <div class="plate-pose pose-reveal" data-research-reveal>
             <div class="pose-framing">
-              <img src="./assets/research-hand.webp" width="1320" height="880" alt="A hand gripping a dark ceramic ring, with an illustrative hand-pose overlay." decoding="async">
+              <img src="./assets/research-hand.webp" width="1320" height="880" alt="A hand gripping a dark ceramic ring." decoding="async" draggable="false">
               <canvas class="pose-guide" width="1536" height="1024" aria-hidden="true"></canvas>
+              <span class="pose-divider" data-pose-divider aria-hidden="true" hidden><span class="pose-hint">‹ <span></span> ›</span></span>
             </div>
+            <input id="pose-overlay" class="visually-hidden" type="range" min="0" max="100" step="1" value="55" aria-label="Reveal illustrative hand pose overlay" aria-describedby="pose-instructions" data-pose-slider hidden>
+            <span id="pose-instructions" class="visually-hidden">Use the arrow keys or drag the image left and right.</span>
           </div>
           <div class="chapter-eeg">
             <img class="plate-eeg" src="./assets/research-eeg.webp" width="1180" height="665" alt="Illustrative EEG waveform traces on paper." decoding="async">

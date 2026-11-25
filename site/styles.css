@@ -286,6 +286,8 @@ figure {
 }
 
 .title-word {
+  position: relative;
+  z-index: 1;
   display: block;
   overflow: hidden;
   padding-inline: 0.018em;
@@ -318,8 +320,20 @@ figure {
   display: inline-block;
 }
 
+.name-echo {
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: flex;
+  gap: 0.14em;
+  color: transparent;
+  opacity: 0;
+  -webkit-text-stroke: 1px #a03222a8;
+  pointer-events: none;
+}
+
 .name-ripple-mark {
   position: absolute;
+  z-index: 2;
   inset: 0.35rem 0.4rem auto auto;
   color: var(--accent);
   font: 700 clamp(0.95rem, 1.4vw, 1.18rem) / 1 system-ui, sans-serif;
@@ -356,6 +370,80 @@ figure {
   line-height: 1.14;
   letter-spacing: -0.035em;
   text-wrap: pretty;
+}
+
+.hero-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(4.8rem, 9vw, 7.5rem);
+  align-items: end;
+  gap: clamp(0.5rem, 1.2vw, 1.25rem);
+}
+
+.three-body-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.three-body-orbit {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.three-body-path,
+.three-body-trail {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.three-body-path {
+  stroke: #71877e;
+  stroke-width: 1.3;
+  opacity: 0.6;
+}
+
+.three-body-trail {
+  stroke: currentColor;
+  stroke-width: 1.8;
+  opacity: 0.8;
+}
+
+.three-body-star {
+  fill: currentColor;
+  stroke: var(--paper);
+  stroke-width: 1.2;
+}
+
+.body-one { color: #a03222; }
+.body-two { color: #487b71; }
+.body-three { color: #182235; }
+
+.orbit-toggle,
+.orbit-status {
+  color: var(--muted);
+  font: 650 0.65rem / 1.3 var(--mono);
+  white-space: nowrap;
+}
+
+.orbit-toggle:not([hidden]) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 0.3rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.orbit-toggle:hover {
+  color: var(--accent);
+}
+
+.orbit-status {
+  padding-block: 0.9rem;
 }
 
 .portfolio-index {
@@ -770,6 +858,7 @@ figure {
 
 .pose-reveal {
   --unfold: 1;
+  --pose-reveal: 100%;
 }
 
 .pose-framing {
@@ -787,6 +876,63 @@ figure {
   height: 100%;
   object-fit: cover;
   opacity: clamp(0, (var(--unfold) - 0.31) * 2.4, 1);
+  clip-path: inset(0 calc(100% - var(--pose-reveal)) 0 0);
+  pointer-events: none;
+}
+
+.pose-framing[data-interactive] {
+  cursor: ew-resize;
+  touch-action: pan-y;
+}
+
+.pose-framing[data-dragging] {
+  cursor: grabbing;
+}
+
+.pose-divider {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.pose-divider::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 var(--pose-reveal);
+  width: 1px;
+  background: #e5f4eb90;
+}
+
+.pose-hint {
+  position: absolute;
+  top: 50%;
+  left: clamp(1.1rem, var(--pose-reveal), calc(100% - 1.1rem));
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12rem;
+  padding: 0.05rem 0.3rem 0.12rem;
+  border-radius: 1rem;
+  color: #f0f8f1d9;
+  background: #19342b55;
+  font: 500 1rem / 1 system-ui, sans-serif;
+  transform: translate(-50%, -50%);
+}
+
+.pose-hint span {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.pose-reveal:focus-within::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0.25rem;
+  outline: 2px solid #d8f1e6;
+  outline-offset: -2px;
   pointer-events: none;
 }
 
@@ -1579,6 +1725,10 @@ figure {
   .hero-heading p {
     max-width: 32ch;
     padding-block-end: 0;
+  }
+
+  .hero-intro {
+    align-items: center;
   }
 
   .portfolio-index {
