@@ -1,35 +1,34 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { sampleFigureEight } = require("../site/three-body-orbit.js");
+const physics = require("../site/three-body-orbit.js");
 
-function energy(positions, velocities) {
-  let total = velocities.reduce((sum, velocity) => sum + velocity * velocity / 2, 0);
-  for (let i = 0; i < 3; i++) {
-    for (let j = i + 1; j < 3; j++) {
-      total -= 1 / Math.hypot(positions[2 * i] - positions[2 * j], positions[2 * i + 1] - positions[2 * j + 1]);
-    }
-  }
-  return total;
+function advance(system, duration) {
+  const end = system.time + duration;
+  while (system.time < end) physics.step(system, Math.min(physics.suitableStep(system), end - system.time));
 }
 
-test("the equal-mass figure-eight returns near its initial state without energy drift", () => {
-  const orbit = sampleFigureEight();
-  const maxDifference = (left, right) => Math.max(...left.map((value, index) => Math.abs(value - right[index])));
-  assert.ok(maxDifference(orbit.initialPositions, orbit.finalPositions) < 1e-5);
-  assert.ok(maxDifference(orbit.initialVelocities, orbit.finalVelocities) < 1e-5);
-  assert.ok(Math.abs(energy(orbit.initialPositions, orbit.initialVelocities) - energy(orbit.finalPositions, orbit.finalVelocities)) < 1e-9);
+test("a seed reproduces the same initial system and another seed changes it", () => {
+  assert.deepEqual(physics.create(1234), physics.create(1234));
+  assert.notDeepEqual(physics.create(1234).bodies, physics.create(1235).bodies);
 });
 
-test("the three bodies trace the same curve a third of a period apart", () => {
-  const { frames } = sampleFigureEight();
-  const initial = frames[0];
-  for (const [index, body] of [[frames.length / 3, 1], [2 * frames.length / 3, 2]]) {
-    const point = frames[index];
-    assert.ok(Math.hypot(point[0] - initial[2 * body], point[1] - initial[2 * body + 1]) < 1e-5);
-  }
-  for (const frame of frames) {
-    assert.ok(frame.every(Number.isFinite));
-    assert.ok(Math.abs(frame[0] + frame[2] + frame[4]) < 1e-10);
-    assert.ok(Math.abs(frame[1] + frame[3] + frame[5]) < 1e-10);
-  }
+test("the simulated bodies move under mutual gravity while conserving momentum and energy", () => {
+  const system = physics.create(1234);
+  const initial = system.bodies.map(body => [body.x, body.y]);
+  const initialEnergy = system.initialEnergy;
+  advance(system, 8);
+  const momentum = field => system.bodies.reduce((sum, body) => sum + body.mass * body[field], 0);
+  assert.ok(Math.abs(momentum("vx")) < 1e-10);
+  assert.ok(Math.abs(momentum("vy")) < 1e-10);
+  assert.ok(Math.abs((physics.energy(system) - initialEnergy) / initialEnergy) < 0.001);
+  assert.ok(system.bodies.some((body, index) => Math.hypot(body.x - initial[index][0], body.y - initial[index][1]) > 0.1));
+});
+
+test("softening keeps the calculation finite for coincident positions", () => {
+  const system = physics.create(91);
+  system.bodies[1].x = system.bodies[0].x;
+  system.bodies[1].y = system.bodies[0].y;
+  physics.step(system, physics.suitableStep(system));
+  assert.ok(Number.isFinite(physics.energy(system)));
+  assert.ok(system.bodies.every(body => [body.x, body.y, body.vx, body.vy].every(Number.isFinite)));
 });

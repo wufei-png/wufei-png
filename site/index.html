@@ -7,12 +7,12 @@
   <meta name="theme-color" content="#f5f3ef">
   <title>Wu Fei · Research, projects, and open source</title>
   <link rel="preload" href="./assets/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=4">
+  <link rel="stylesheet" href="./styles.css?v=5">
   <script src="./portfolio.js" defer></script>
   <script src="./eeg.js" defer></script>
   <script src="./portfolio-details.js" defer></script>
-  <script src="./three-body-orbit.js" defer></script>
-  <script src="./three-body.js" defer></script>
+  <script src="./three-body-orbit.js?v=2" defer></script>
+  <script src="./three-body.js?v=2" defer></script>
   <script src="./visual-details.js" defer></script>
   <script src="./ask.js" defer></script>
 </head>
@@ -43,20 +43,25 @@
         </h1>
         <span id="name-ripple-label" class="visually-hidden">Play a ripple and an echo in the title</span>
         <div class="hero-intro">
-          <p>I work across research, software, and creative projects.</p>
-          <div class="three-body-mark" data-three-body>
-            <svg class="three-body-orbit" viewBox="0 0 180 120" role="img" aria-label="Three equal bodies follow a figure-eight orbit.">
-              <path class="three-body-path" data-orbit-path d="M90 60 C66 32 20 28 18 60 C20 92 66 88 90 60 C114 32 160 28 162 60 C160 92 114 88 90 60 Z"/>
-              <path class="three-body-trail body-one" data-orbit-trail="0"/>
-              <path class="three-body-trail body-two" data-orbit-trail="1"/>
-              <path class="three-body-trail body-three" data-orbit-trail="2"/>
-              <circle class="three-body-star body-one" data-orbit-body="0" cx="22" cy="77" r="5"/>
-              <circle class="three-body-star body-two" data-orbit-body="1" cx="158" cy="43" r="5"/>
-              <circle class="three-body-star body-three" data-orbit-body="2" cx="90" cy="60" r="5"/>
-            </svg>
-            <button class="orbit-toggle" type="button" aria-label="Animate the three-body orbit" aria-pressed="false" data-orbit-toggle hidden>Play orbit</button>
-            <span class="orbit-status" data-orbit-status hidden>Motion reduced</span>
-          </div>
+          <p>Applied AI engineer with a background in computer vision and EEG.</p>
+          <figure class="three-body-mark" data-three-body>
+            <div class="orbit-art">
+              <svg class="orbit-fallback" viewBox="0 0 200 150" role="img" aria-label="An illustration of three bodies in motion.">
+                <circle class="orbit-guide" cx="100" cy="75" r="53"/>
+                <path d="M38 94 C28 61 59 32 96 42 C122 49 125 73 112 96" stroke="#a03222"/>
+                <path d="M65 111 C108 130 155 102 151 65 C149 43 133 34 116 31" stroke="#487b71"/>
+                <path d="M144 43 C159 70 136 88 106 81 C87 77 77 66 68 54" stroke="#182235"/>
+                <circle cx="112" cy="96" r="3" fill="#a03222"/>
+                <circle cx="116" cy="31" r="3" fill="#487b71"/>
+                <circle cx="68" cy="54" r="3" fill="#182235"/>
+              </svg>
+              <canvas class="orbit-canvas" data-orbit-canvas role="img" aria-label="Three bodies move under their mutual gravity, leaving changing ink trails." hidden></canvas>
+            </div>
+            <div class="orbit-controls">
+              <button class="orbit-toggle" type="button" data-orbit-toggle hidden>Pause</button>
+              <button class="orbit-new" type="button" data-orbit-new hidden>New orbit <span aria-hidden="true">↗</span></button>
+            </div>
+          </figure>
         </div>
       </div>
 
@@ -264,7 +269,7 @@
                 <img src="./assets/project-feishu.webp" width="900" height="507" loading="lazy" decoding="async" alt="An office illustration of a shadow assistant sorting message and approval cards.">
               </a>
               <figcaption>
-                <span>Local MVP · Owner approval</span>
+                <span>Local MVP</span>
                 <a class="text-link" href="https://github.com/wufei-png/feishu-shadow-agent">Feishu Shadow Agent on GitHub <span aria-hidden="true">↗</span></a>
               </figcaption>
             </figure>
@@ -283,11 +288,8 @@
                 <img src="./assets/project-askany.webp" width="900" height="507" loading="lazy" decoding="async" alt="An illustration of a question flowing through retrieval and workflow tools to an answer with sources.">
               </a>
               <figcaption>
-                <span>FAQ and document retrieval</span>
-                <span class="project-preview-links">
-                  <a class="text-link" href="https://github.com/wufei-png/AskAny/blob/main/docs/current-runtime.md">Runtime contract <span aria-hidden="true">↗</span></a>
-                  <a class="text-link project-repository" href="https://github.com/wufei-png/AskAny">GitHub repository <span aria-hidden="true">↗</span></a>
-                </span>
+                <a class="text-link" href="https://github.com/wufei-png/AskAny/blob/main/docs/current-runtime.md">Runtime contract <span aria-hidden="true">↗</span></a>
+                <a class="text-link project-repository" href="https://github.com/wufei-png/AskAny">GitHub repository <span aria-hidden="true">↗</span></a>
               </figcaption>
             </figure>
           </div>
@@ -394,7 +396,7 @@
                 <iframe class="project-image film-player" title="Xiang Yu music video on Bilibili" src="https://player.bilibili.com/player.html?bvid=BV1mUWa6AEdd&amp;p=1&amp;autoplay=1&amp;danmaku=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
               </template>
               <figcaption>
-                <span>Xiang Yu · Pixel-art music video</span>
+                <span>Pixel-art music video</span>
                 <span class="project-preview-links">
                   <a class="text-link" href="https://www.bilibili.com/video/BV1mUWa6AEdd/">Watch on Bilibili <span aria-hidden="true">↗</span></a>
                   <a class="text-link project-repository" href="https://github.com/wufei-png/ai-mv">GitHub repository <span aria-hidden="true">↗</span></a>
@@ -410,7 +412,6 @@
           <h3 id="dialoglingo-demo-title">From chat to workbook</h3>
           <p class="field-label">DialogLingo · Sample conversation</p>
         </header>
-        <p>Switch to the workbook to see two study cards drawn from the same exchange.</p>
         <fieldset class="demo-switch">
           <legend class="visually-hidden">DialogLingo example view</legend>
           <input type="radio" name="dialoglingo-view" id="dialoglingo-chat" checked>
@@ -439,7 +440,6 @@
                 <p class="demo-label">Sentence</p>
                 <h4>Try to reproduce the failure with a minimal example.</h4>
                 <p lang="zh-Hans">试着用一个最小示例复现这个故障。</p>
-                <p class="study-context">From the agent’s reply</p>
               </article>
             </div>
           </div>
@@ -548,7 +548,7 @@
                 <figcaption>
                   <code class="topomap-before">plt.subplots(1, num_subplots)</code>
                   <code class="topomap-after">fig_shape=(2, 2)</code>
-                  <span>Same illustrative scalp maps in both layouts.</span>
+                  <span>Illustrative scalp maps</span>
                 </figcaption>
               </figure>
             </fieldset>
@@ -561,13 +561,8 @@
 
   <footer class="page-footer" id="contact" tabindex="-1">
     <div class="frame footer-grid">
-      <section aria-labelledby="about-title">
-        <h2 id="about-title">About</h2>
-        <p>I'm an applied AI engineer with a background in computer vision and EEG modeling.</p>
-      </section>
       <section aria-labelledby="contact-title">
         <h2 id="contact-title">Contact</h2>
-        <p>For open-source collaboration, research, or conversations about building tools, reach me by email.</p>
         <a class="text-link" href="mailto:wufeii.sjtu@gmail.com">wufeii.sjtu@gmail.com</a>
       </section>
     </div>

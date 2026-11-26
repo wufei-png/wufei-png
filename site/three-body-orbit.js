@@ -1,66 +1,103 @@
-/*
- * Figure-eight initial conditions and Yoshida integration adapted from
- * https://github.com/nicolasadamini/three-body-webgl/tree/9025085bc2600d26eef8539c57f5077f15c7f950
- * Copyright (c) 2026 Nicolas Adamini. MIT license: assets/THREE-BODY-LICENSE.txt
- */
+/* A small, seeded three-body model for the portfolio orbit. */
 ((root, factory) => {
   const api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.ThreeBodyOrbit = api;
 })(globalThis, () => {
-  const period = 6.3259140;
-  const initialPositions = [-0.97000436, 0.24308753, 0.97000436, -0.24308753, 0, 0];
-  const initialVelocities = [0.466203685, 0.43236573, 0.466203685, 0.43236573, -0.93240737, -0.86473146];
-  const cubeRootTwo = Math.cbrt(2);
-  const w1 = 1 / (2 - cubeRootTwo);
-  const w0 = -cubeRootTwo / (2 - cubeRootTwo);
-  const drift = [w1 / 2, (w0 + w1) / 2, (w0 + w1) / 2, w1 / 2];
-  const kick = [w1, w0, w1];
+  const softening = 0.06;
+  const softeningSquared = softening * softening;
 
-  function sampleFigureEight(sampleCount = 480, substeps = 8) {
-    if (!Number.isInteger(sampleCount) || sampleCount < 3 || !Number.isInteger(substeps) || substeps < 1) {
-      throw new RangeError("sampleCount and substeps must be positive integers");
-    }
-    const positions = Float64Array.from(initialPositions);
-    const velocities = Float64Array.from(initialVelocities);
-    const acceleration = new Float64Array(6);
-    const frames = [];
-    const dt = period / (sampleCount * substeps);
-
-    function step() {
-      for (let stage = 0; stage < 4; stage++) {
-        for (let i = 0; i < 6; i++) positions[i] += drift[stage] * dt * velocities[i];
-        if (stage === 3) break;
-        acceleration.fill(0);
-        for (let i = 0; i < 3; i++) {
-          for (let j = i + 1; j < 3; j++) {
-            const dx = positions[2 * j] - positions[2 * i];
-            const dy = positions[2 * j + 1] - positions[2 * i + 1];
-            const distanceSquared = dx * dx + dy * dy;
-            const force = 1 / (distanceSquared * Math.sqrt(distanceSquared));
-            acceleration[2 * i] += dx * force;
-            acceleration[2 * i + 1] += dy * force;
-            acceleration[2 * j] -= dx * force;
-            acceleration[2 * j + 1] -= dy * force;
-          }
-        }
-        for (let i = 0; i < 6; i++) velocities[i] += kick[stage] * dt * acceleration[i];
-      }
-    }
-
-    for (let i = 0; i < sampleCount; i++) {
-      frames.push(Array.from(positions));
-      for (let j = 0; j < substeps; j++) step();
-    }
-    return {
-      period,
-      frames,
-      initialPositions: initialPositions.slice(),
-      initialVelocities: initialVelocities.slice(),
-      finalPositions: Array.from(positions),
-      finalVelocities: Array.from(velocities),
+  function randomSource(seed) {
+    let state = seed >>> 0;
+    return () => {
+      state = (state + 0x6d2b79f5) >>> 0;
+      let value = Math.imul(state ^ (state >>> 15), state | 1);
+      value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+      return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
     };
   }
 
-  return { sampleFigureEight };
+  function create(seed) {
+    const random = randomSource(seed);
+    const rotation = random() * Math.PI * 2;
+    const direction = random() < 0.5 ? -1 : 1;
+    const bodies = Array.from({ length: 3 }, (_, index) => {
+      const angle = rotation + index * Math.PI * 2 / 3 + (random() - 0.5) * 0.62;
+      const radius = 0.72 + random() * 0.65;
+      const speed = 0.48 + random() * 0.36;
+      return {
+        mass: 0.82 + random() * 0.36,
+        x: radius * Math.cos(angle),
+        y: radius * Math.sin(angle),
+        vx: -direction * speed * Math.sin(angle) + (random() - 0.5) * 0.25,
+        vy: direction * speed * Math.cos(angle) + (random() - 0.5) * 0.25,
+      };
+    });
+    const mass = bodies.reduce((sum, body) => sum + body.mass, 0);
+    for (const field of ["x", "y", "vx", "vy"]) {
+      const center = bodies.reduce((sum, body) => sum + body.mass * body[field], 0) / mass;
+      for (const body of bodies) body[field] -= center;
+    }
+    const system = { seed: seed >>> 0, bodies, time: 0 };
+    system.initialEnergy = energy(system);
+    return system;
+  }
+
+  function accelerations(bodies) {
+    const acceleration = bodies.map(() => ({ x: 0, y: 0 }));
+    for (let i = 0; i < bodies.length; i++) {
+      for (let j = i + 1; j < bodies.length; j++) {
+        const dx = bodies[j].x - bodies[i].x;
+        const dy = bodies[j].y - bodies[i].y;
+        const distanceSquared = dx * dx + dy * dy + softeningSquared;
+        const inverseCube = 1 / (distanceSquared * Math.sqrt(distanceSquared));
+        acceleration[i].x += bodies[j].mass * dx * inverseCube;
+        acceleration[i].y += bodies[j].mass * dy * inverseCube;
+        acceleration[j].x -= bodies[i].mass * dx * inverseCube;
+        acceleration[j].y -= bodies[i].mass * dy * inverseCube;
+      }
+    }
+    return acceleration;
+  }
+
+  function step(system, dt) {
+    const before = accelerations(system.bodies);
+    for (let i = 0; i < system.bodies.length; i++) {
+      const body = system.bodies[i];
+      body.x += body.vx * dt + before[i].x * dt * dt / 2;
+      body.y += body.vy * dt + before[i].y * dt * dt / 2;
+    }
+    const after = accelerations(system.bodies);
+    for (let i = 0; i < system.bodies.length; i++) {
+      system.bodies[i].vx += (before[i].x + after[i].x) * dt / 2;
+      system.bodies[i].vy += (before[i].y + after[i].y) * dt / 2;
+    }
+    system.time += dt;
+  }
+
+  function suitableStep(system) {
+    let closest = Infinity;
+    for (let i = 0; i < system.bodies.length; i++) {
+      for (let j = i + 1; j < system.bodies.length; j++) {
+        const dx = system.bodies[j].x - system.bodies[i].x;
+        const dy = system.bodies[j].y - system.bodies[i].y;
+        closest = Math.min(closest, Math.sqrt(dx * dx + dy * dy + softeningSquared));
+      }
+    }
+    return Math.min(0.005, 0.012 * Math.pow(closest, 1.5));
+  }
+
+  function energy(system) {
+    let total = system.bodies.reduce((sum, body) => sum + body.mass * (body.vx ** 2 + body.vy ** 2) / 2, 0);
+    for (let i = 0; i < system.bodies.length; i++) {
+      for (let j = i + 1; j < system.bodies.length; j++) {
+        const a = system.bodies[i];
+        const b = system.bodies[j];
+        total -= a.mass * b.mass / Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2 + softeningSquared);
+      }
+    }
+    return total;
+  }
+
+  return { create, step, energy, suitableStep, softening };
 });
